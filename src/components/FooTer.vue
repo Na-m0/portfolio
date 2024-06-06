@@ -8,24 +8,25 @@
       <div class="wave" id="wave4"></div>
     </div>
     <ul class="social-icon">
-      <li class="social-icon__item"><a class="social-icon__link" href="#">
-          <ion-icon name="logo-facebook"></ion-icon>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://github.com/Na-m0">
+          <i class="fab fa-github"></i>
         </a></li>
-      <li class="social-icon__item"><a class="social-icon__link" href="#">
-          <ion-icon name="logo-twitter"></ion-icon>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://x.com/NGirods">
+          <i class="fab fa-twitter"></i>
         </a></li>
-      <li class="social-icon__item"><a class="social-icon__link" href="#">
-          <ion-icon name="logo-linkedin"></ion-icon>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.linkedin.com/in/noam-joly-girods-3a27b62a4/">
+          <i class="fab fa-linkedin"></i>
         </a></li>
-      <li class="social-icon__item"><a class="social-icon__link" href="#">
-          <ion-icon name="logo-instagram"></ion-icon>
+      <li class="social-icon__item"><a class="social-icon__link" href="https://www.instagram.com/nam0_jg/?next=%2F">
+          <i class="fab fa-instagram"></i>
         </a></li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
-      <li class="menu__item"><a class="menu__link" href="#">About</a></li>
-      <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
-      <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="#">Acceuil</a></li>
+      <li class="menu__item"><a class="menu__link" href="#">A propos</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Compétences</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Contexte</a></li>
+      <li class="menu__item"><a class="menu__link" href="#">Projet</a></li>
     </ul>
     <p>&copy;2024 Noam JOLY-GIRODS | All Rights Reserved</p>
   </footer>
@@ -43,7 +44,7 @@ body {
   background: #333;
   justify-content: flex-end;
   align-items: flex-end;
-  min-height: 55vh;
+  min-height: 80vh;
 }
 
 .footer {

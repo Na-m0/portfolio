@@ -1,19 +1,12 @@
 <template>
-    <div>
-        <div class="container-top">
-          test
-        </div>
-
-        
+    <div class="container-top">
+        <h1>Projet</h1>
     </div>
-    
-  </template>
-  
-  <script>
+</template>
 
-  </script>
-  
-  <style scoped>
+<script>
+</script>
 
-  </style>
-  
+<style scoped>
+
+</style>
