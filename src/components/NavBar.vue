@@ -61,7 +61,7 @@ export default {
 }
 
 .navbar-scrolled {
-    background-color: #333;
+    background-color: #252422;
 }
 
 .logo {

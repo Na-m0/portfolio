@@ -2,7 +2,6 @@
 import NavBar from './components/NavBar.vue';
 import FooTer from './components/FooTer.vue';
 import Competence from './components/Competence.vue';
-import About from './components/About.vue';
 import Contexte from './components/Contexte.vue';
 import Projet from './components/Projet.vue';
 import Home from "@/components/Home.vue";
@@ -14,9 +13,8 @@ import Home from "@/components/Home.vue";
       <NavBar/>
       <Home/>
       <div class="content">
-          <About/>
-          <Competence/>
           <Contexte/>
+          <Competence/>
           <Projet/>
       </div>
       <FooTer/>
@@ -26,15 +24,16 @@ import Home from "@/components/Home.vue";
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
-.container-top {
-  width: 95%;
-  height: 100%;
-  margin: 1% auto;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+h1 {
+  font-size: 37px;
+}
+
+h2 {
+  font-size: 18px
+}
+
+p {
+  font-size: 14px
 }
 
 * {
@@ -54,10 +53,8 @@ header {
 }
 
 .content {
-    padding: 7rem;
-    background-color: rgb(114, 110, 110);
-    position: relative; /* Assurez-vous que le contenu est positionné pour les éléments absolus à l'intérieur */
-    z-index: 1; /* Assurez-vous qu'il est en dessous de la barre de navigation */
+    position: relative; 
+    z-index: 1;
 }
 @media (min-width: 1024px) {
   header {

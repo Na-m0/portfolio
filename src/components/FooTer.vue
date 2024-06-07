@@ -1,12 +1,7 @@
 <template>
 <body>
   <footer class="footer">
-    <div class="waves">
-      <div class="wave" id="wave1"></div>
-      <div class="wave" id="wave2"></div>
-      <div class="wave" id="wave3"></div>
-      <div class="wave" id="wave4"></div>
-    </div>
+    
     <ul class="social-icon">
       <li class="social-icon__item"><a class="social-icon__link" href="https://github.com/Na-m0">
           <i class="fab fa-github"></i>
@@ -41,7 +36,7 @@
 
 body {
   display: flex;
-  background: #333;
+  background: #252422;
   justify-content: flex-end;
   align-items: flex-end;
   min-height: 80vh;
@@ -50,7 +45,6 @@ body {
 .footer {
   position: relative;
   width: 100%;
-  background: #3586ff;
   min-height: 100px;
   padding: 20px 50px;
   display: flex;
