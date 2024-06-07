@@ -12,11 +12,15 @@ import Home from "@/components/Home.vue";
     <div>
       <NavBar/>
       <Home/>
-      <div class="content">
+      <div id="contexte" class="content">
           <Contexte/>
+        </div>
+        <div id="competence" class="content">
           <Competence/>
+        </div>
+        <div id="projet" class="content">
           <Projet/>
-      </div>
+        </div>
       <FooTer/>
     </div>
 </template>
@@ -29,11 +33,16 @@ h1 {
 }
 
 h2 {
-  font-size: 18px
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 18px;
 }
 
 p {
-  font-size: 14px
+  font-size: 17px;
+  font-weight: normal;
 }
 
 * {

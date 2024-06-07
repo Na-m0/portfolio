@@ -197,6 +197,8 @@
   <style scoped>
   
 .container-top {
+  height: 100vh;
+  padding-top: 125px;
   background: #FFFCF2;
 }
 
@@ -226,11 +228,11 @@ h1 {
   }
   
   .slide-card {
+    background-color: #949494;
     padding: 20px;
-    border-radius: 10px;
     width: 100%;
     max-width: 100%; 
-    height: 400px; 
+    height: 100%; 
     text-align: center;
     display: flex;
     flex-direction: column;
