@@ -1,15 +1,15 @@
 <template>
     <nav :class="['navbar', { 'navbar-scrolled': isScrolled }]">
-        <div class="logo">
+        <div class="logo" @click="launchConfetti">
             <img src="@/assets/logo.png" alt="Logo" class="logo-image"/>
         </div>
         <div class="nav-center">
             <ul class="nav-links">
-                <li><a href="">Acceuil</a></li>
-                <li><a href="">A propos</a></li>
-                <li><a href="">Compétences</a></li>
-                <li><a href="">Contexte</a></li>
-                <li><a href="">Projet</a></li>
+                <li><a href="#accueil" @click.prevent="scrollToSection('accueil')">Accueil</a></li>
+                <li><a href="#contexte" @click.prevent="scrollToSection('contexte')">Contexte</a></li>
+                <li><a href="#competence" @click.prevent="scrollToSection('competence')">Compétences</a></li>
+                <li><a href="#projet" @click.prevent="scrollToSection('projet')">Projet</a></li>
+                <li><a href="#contact" @click.prevent="scrollToSection('footer')">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -17,6 +17,7 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue';
+import confetti from 'canvas-confetti';
 
 export default {
     name: 'NavBar',
@@ -35,15 +36,31 @@ export default {
             window.removeEventListener('scroll', handleScroll);
         });
 
+        const scrollToSection = (sectionId) => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        const launchConfetti = () => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        };
+
         return {
-            isScrolled
+            isScrolled,
+            scrollToSection,
+            launchConfetti
         };
     }
 };
 </script>
 
 <style scoped>
-
 .logo {
     border-radius: 20px;
 }
@@ -75,6 +92,7 @@ export default {
     border-radius: 15px;
     height: 50px;
     transition: height 0.3s;
+    cursor: pointer;
 }
 
 .nav-center {

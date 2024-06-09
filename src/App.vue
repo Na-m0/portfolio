@@ -11,7 +11,9 @@ import Home from "@/components/Home.vue";
 <template>
     <div>
       <NavBar/>
-      <Home/>
+        <div id="accueil">
+            <Home/>
+        </div>
       <div id="contexte" class="content">
           <Contexte/>
         </div>
@@ -21,7 +23,9 @@ import Home from "@/components/Home.vue";
         <div id="projet" class="content">
           <Projet/>
         </div>
-      <FooTer/>
+        <div id="footer">
+            <FooTer/>
+        </div>
     </div>
 </template>
 
@@ -41,7 +45,7 @@ h3 {
 }
 
 p {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: normal;
 }
 

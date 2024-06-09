@@ -70,7 +70,7 @@ h1 {
 
 /* Style de la ligne */
 .underline {
-  width: 600px; /* Largeur de la ligne */
+  width: 85%; /* Largeur de la ligne */
   height: 2px; /* Épaisseur de la ligne */
   background-color: #CCC5B9; /* Couleur de la ligne */
   margin-top: 10px; /* Marge supérieure */
