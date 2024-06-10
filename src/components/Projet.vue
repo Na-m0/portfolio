@@ -39,6 +39,22 @@ import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import charming from 'charming';
 import { TweenMax, Back, Expo, Quart } from 'gsap';
+import image1 from '../assets/Mairie_de_Montbéliard.jpg';
+import image2 from '../assets/Mairie_de_Montbéliard.jpg';
+import image3 from '../assets/Mairie_de_Montbéliard.jpg';
+import image4 from '../assets/Mairie_de_Montbéliard.jpg';
+import image5 from '../assets/Mairie_de_Montbéliard.jpg';
+import image6 from '../assets/Mairie_de_Montbéliard.jpg';
+import image7 from '../assets/Mairie_de_Montbéliard.jpg';
+import image8 from '../assets/Mairie_de_Montbéliard.jpg';
+import image9 from '../assets/Mairie_de_Montbéliard.jpg';
+import image10 from '../assets/Mairie_de_Montbéliard.jpg';
+import image11 from '../assets/Mairie_de_Montbéliard.jpg';
+import image12 from '../assets/Mairie_de_Montbéliard.jpg';
+import image13 from '../assets/Mairie_de_Montbéliard.jpg';
+import image14 from '../assets/Mairie_de_Montbéliard.jpg';
+import image15 from '../assets/Mairie_de_Montbéliard.jpg';
+import image16 from '../assets/Mairie_de_Montbéliard.jpg';
 
 export default {
     setup() {
@@ -46,82 +62,82 @@ export default {
         {
             title: 'Étape 1',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.',
-            image: "../assets/gear5.webp"
+            image: image1
         },
         {
             title: 'Étape 2',
             text: '',
-            image: '',
+            image: image2
         },
         {
             title: 'Étape 3',
             text: '',
-            image: '',
+            image: image3
         },
         {
             title: 'Étape 4',
             text: '',
-            image: '',
+            image: image4
         },
         {
             title: 'Étape 5',
             text: '',
-            image: '',
+            image: image5
         },
         {
             title: 'Étape 6',
             text: '',
-            image: '',
+            image: image6
         },
         {
             title: 'Étape 7',
             text: '',
-            image: '',
+            image: image7
         },
         {
             title: 'Étape 8',
             text: '',
-            image: '',
+            image: image8
         },
         {
             title: 'Étape 9',
             text: '1',
-            image: '',
+            image: image9
         },
         {
             title: 'Étape 10',
             text: '1',
-            image: '',
+            image: image10
         },
         {
             title: 'Étape 11',
             text: '1',
-            image: '',
+            image: image11
         },
         {
             title: 'Étape 12',
             text: '1',
-            image: '',
+            image: image12
         },
         {
             title: 'Étape 13',
             text: '1',
-            image: '',
+            image: image13
         },
         {
             title: 'Étape 14',
             text: '1',
-            image: '',
+            image: image14
         },
         {
             title: 'Étape 15',
             text: '1',
-            image: '',
+            image: image15
         },
         {
             title: 'Étape 16',
             text: '1',
-            image: '',
+            image: image16
         },
         // Ajoutez d'autres slides ici
     ]);
@@ -370,7 +386,8 @@ h1.overlay-title {
 
 .slide-card {
     background-color: #FFFCF2;
-    padding: 90px;
+    padding-right: 90px;
+    padding-left: 90px;
     width: 100%;
     max-width: 100%;
     height: 100%;
@@ -414,6 +431,8 @@ h1.overlay-title {
 .slide-image {
     max-width: 80%;
     height: auto;
+    border-radius: 10px;
+
 }
 
 .slideshow-pagination {
@@ -462,12 +481,12 @@ h1.overlay-title {
 
 /* Styles pour la flèche de gauche */
 .slideshow-navigation-button.prev {
-    left: 20px;
+    left: 55px;
 }
 
 /* Styles pour la flèche de droite */
 .slideshow-navigation-button.next {
-    right: 20px;
+    right: 55px;
 }
 
 /* Au survol, assombrissez légèrement la couleur de fond */

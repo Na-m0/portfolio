@@ -14,7 +14,7 @@
             </div>
             <div class="image">
                 <img src="../assets/gear5.webp" alt="Image descriptive" class="main-image">
-                <img src="../assets/gear5.webp" alt="Overlay Image" class="overlay-image">
+                <img src="../assets/Mairie_de_Montbéliard.jpg" alt="Overlay Image" class="overlay-image">
             </div>
         </div>
         <div class="scroll-down" id="scrollDown" @click="handleContactClick">
