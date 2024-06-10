@@ -46,7 +46,7 @@ export default {
         {
             title: 'Étape 1',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.',
-            image: 'src/assets/gear5.webp',
+            image: "../assets/gear5.webp"
         },
         {
             title: 'Étape 2',
