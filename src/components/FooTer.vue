@@ -17,11 +17,10 @@
         </a></li>
     </ul>
     <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="#">Acceuil</a></li>
-      <li class="menu__item"><a class="menu__link" href="#">A propos</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Compétences</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Contexte</a></li>
-      <li class="menu__item"><a class="menu__link" href="#">Projet</a></li>
+      <li class="menu__item"><a class="menu__link" href="#accueil" @click.prevent="scrollToSection('accueil')">Accueil</a></li>
+      <li class="menu__item"><a class="menu__link" href="#contexte" @click.prevent="scrollToSection('contexte')">Contexte</a></li>
+        <li class="menu__item"><a class="menu__link" href="#competence" @click.prevent="scrollToSection('competence')">Compétences</a></li>
+        <li class="menu__item"><a class="menu__link" href="#projet" @click.prevent="scrollToSection('projet')">Projet</a></li>
     </ul>
     <p>&copy;2024 Noam JOLY-GIRODS | All Rights Reserved</p>
   </footer>
@@ -29,7 +28,37 @@
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from 'vue';
 
+export default {
+    name: 'NavBar',
+    setup() {
+        const isScrolled = ref(false);
+
+        const handleScroll = () => {
+            isScrolled.value = window.scrollY > 50;
+        };
+
+        onMounted(() => {
+            window.addEventListener('scroll', handleScroll);
+        });
+
+        onUnmounted(() => {
+            window.removeEventListener('scroll', handleScroll);
+        });
+
+        const scrollToSection = (sectionId) => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        return {
+            scrollToSection,
+        };
+    }
+};
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
     <section class="container-top">
         <h1 class="main-title">PROJET</h1>
         <h1 class="overlay-title">PROJET</h1>
-        <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présenté</p>
+        <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présentées</p>
         <div class="swiper-container slideshow">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide" v-for="(slide, index) in slides" :key="index">
@@ -10,6 +10,21 @@
                         <div class="text-content">
                             <h2 class="slide-title">{{ slide.title }}</h2>
                             <p class="slide-text">{{ slide.text }}</p>
+                            <h3 class="slide-subtitle">Apprentissage critique validé</h3>
+                            <div class="learning-container">
+                            <div v-for="competence in slide.competences" :key="competence.name" class="competence-block">
+                                <h3>{{ competence.name }}</h3>
+                                <div v-for="level in competence.levels" :key="level.level" class="level">
+                                    <h4>{{ level.level }}</h4>
+                                    <!-- Ajoutez cette condition pour grouper les AC du même niveau -->
+                                    <div class="ac-group" v-if="level.acs.length > 1">
+                                        <div class="circle" v-for="ac in level.acs" :key="ac">{{ ac }}</div>
+                                    </div>
+                                    <!-- Utilisez cette div si vous avez un seul AC par niveau -->
+                                    <div class="circle" v-else>{{ level.acs[0] }}</div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                         <div class="image-content">
                             <img :src="slide.image" alt="Slide image" class="slide-image"/>
@@ -29,7 +44,7 @@
             </div>
         </div>
         <div class="slideshow-progress">
-            <div class="progress-bar" :style="{ width: progress + '%'}"></div>
+            <div class="progress-bar" :style="{ width: progress + '%' }"></div>
         </div>
     </section>
 </template>
@@ -60,88 +75,67 @@ import image16 from '../assets/Mairie_de_Montbéliard.jpg';
 export default {
     setup() {
     const slides = ref([
-        {
-            title: 'Étape 1',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.',
-            image: image1
-        },
-        {
-            title: 'Étape 2',
-            text: '',
-            image: image2
-        },
-        {
-            title: 'Étape 3',
-            text: '',
-            image: image3
-        },
-        {
-            title: 'Étape 4',
-            text: '',
-            image: image4
-        },
-        {
-            title: 'Étape 5',
-            text: '',
-            image: image5
-        },
-        {
-            title: 'Étape 6',
-            text: '',
-            image: image6
-        },
-        {
-            title: 'Étape 7',
-            text: '',
-            image: image7
-        },
-        {
-            title: 'Étape 8',
-            text: '',
-            image: image8
-        },
-        {
-            title: 'Étape 9',
-            text: '1',
-            image: image9
-        },
-        {
-            title: 'Étape 10',
-            text: '1',
-            image: image10
-        },
-        {
-            title: 'Étape 11',
-            text: '1',
-            image: image11
-        },
-        {
-            title: 'Étape 12',
-            text: '1',
-            image: image12
-        },
-        {
-            title: 'Étape 13',
-            text: '1',
-            image: image13
-        },
-        {
-            title: 'Étape 14',
-            text: '1',
-            image: image14
-        },
-        {
-            title: 'Étape 15',
-            text: '1',
-            image: image15
-        },
-        {
-            title: 'Étape 16',
-            text: '1',
-            image: image16
-        },
-        // Ajoutez d'autres slides ici
-    ]);
+    {
+                title: 'Étape 1',
+                text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. 
+                Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae 
+                blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue
+                eget semper malesuada. Phasellus mollis sed dolor sed interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, 
+                id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor 
+                est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.`,
+                image: image1,
+                competences: [
+                    {
+                        name: 'Compétence 1',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1', 'AC 2', 'AC 3', 'AC 4'] },
+                            { level: 'Niveau 2', acs: ['AC 1', 'AC 2', 'AC 3', 'AC 4'] }
+                        ]
+                    },
+                    {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1', 'AC 2', 'AC 3'] },
+                            { level: 'Niveau 2', acs: ['AC 1', 'AC 2', 'AC 3', 'AC 4'] }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'Étape 2',
+                text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. 
+                Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae 
+                blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue
+                eget semper malesuada. Phasellus mollis sed dolor sed interdum.`,
+                image: image2,
+                competences: [
+                    {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1', 'AC 3'] },
+                            { level: 'Niveau 2', acs: ['AC 2', 'AC 4'] }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'Étape 3',
+                text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. 
+                Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae 
+                blandit quam. Phasellus nec nulla libero.`,
+                image: image3,
+                competences: [
+                    {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1', 'AC 2'] },
+                            { level: 'Niveau 2', acs: ['AC 1', 'AC 4'] }
+                        ]
+                    }
+                ]
+            }
+        ]);
 
         let slideshowInstance = null;
         let progress = ref(0);
@@ -320,6 +314,79 @@ export default {
 </script>
 
 <style scoped>
+/* Nouveau style pour les groupes d'AC */
+.ac-group {
+    display: flex; /* Afficher les AC en ligne */
+    flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
+}
+
+/* Ligne horizontale personnalisée */
+.custom-line {
+    width: 60px; /* Ajustez la largeur de la ligne */
+    height: 3px; /* Ajustez l'épaisseur de la ligne */
+    background-color: #252422; /* Ajustez la couleur de la ligne */
+    margin: 20px auto; /* Centre la ligne horizontalement et ajoute de l'espace autour */
+}
+
+/* Titre Apprentissage Critique */
+.learning-title {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 40px;
+    color: #252422;
+}
+
+/* Conteneur de la section Apprentissage Critique */
+.learning-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Bloc pour chaque compétence */
+.competence-block {
+    width: 45%; /* Ajustez la largeur des blocs si nécessaire */
+}
+
+/* Style pour les niveaux */
+.level {
+    margin-bottom: 20px;
+}
+
+/* Titre pour les compétences */
+.competence-block h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #252422;
+}
+
+/* Titre pour les niveaux */
+.level h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #EB5E28;
+}
+
+/* Texte des AC */
+.level p {
+    font-size: 14px;
+    color: #252422;
+}
+
+
+.slide-subtitle {
+    font-size: 16px;
+    color: #252422;
+    margin-top: 10px;
+}
+.slide-subtitle::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #252422;
+    margin-top: 8px;
+}
 .sous-titre {
     font-size: 17px;
     text-align: center;
@@ -352,10 +419,23 @@ export default {
     background: #FFFCF2;
 }
 
+/* Style pour chaque cercle (AC) */
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 27px;
+    background-color: #ccc5b9;
+    border-radius: 20px;
+    margin-bottom: 10px; /* Espace entre les cercles */
+    margin-right: 10px; /* Espace entre les cercles */
+}
+
 h1.main-title {
     color: #252422;
     text-align: center;
-    margin-bottom: 45px;
+    margin-bottom: 2%;
     position: relative;
     z-index: 2;
 }
@@ -401,7 +481,9 @@ h1.overlay-title {
 
 .text-content {
     width: 50%;
-    padding: 55px;
+    padding-bottom: 55px;
+    padding-left: 3%;
+    padding-top: 55px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -416,7 +498,7 @@ h1.overlay-title {
 
 .slide-title {
     font-size: 24px;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
     position: relative; /* Assurez-vous que l'élément parent est positionné */
 }
 .slide-title::after {
@@ -430,13 +512,16 @@ h1.overlay-title {
 
 .slide-text {
     font-size: 16px;
+    margin-left: 10px;
+    margin-bottom: 2%;
+    width: 100%;
     color: #252422;
 }
 
 .slide-image {
     max-width: 80%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 5%;
 
 }
 
@@ -485,12 +570,12 @@ h1.overlay-title {
 
 /* Styles pour la flèche de gauche */
 .slideshow-navigation-button.prev {
-    left: 55px;
+    left: 3%;
 }
 
 /* Styles pour la flèche de droite */
 .slideshow-navigation-button.next {
-    right: 55px;
+    right: 3%;
 }
 
 .slideshow-navigation-button-L i {
