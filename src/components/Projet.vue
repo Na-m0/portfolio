@@ -46,7 +46,7 @@ export default {
         {
             title: 'Étape 1',
             text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.',
-            image: 'portfolio/src/assets/gear5.webp',
+            image: 'src/assets/gear5.webp',
         },
         {
             title: 'Étape 2',
@@ -76,52 +76,52 @@ export default {
         {
             title: 'Étape 7',
             text: '',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 8',
             text: '',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 9',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 10',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 11',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 12',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 13',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 14',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 15',
             text: '1',
-            image: '1',
+            image: '',
         },
         {
             title: 'Étape 16',
             text: '1',
-            image: '1',
+            image: '',
         },
         // Ajoutez d'autres slides ici
     ]);
