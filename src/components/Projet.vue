@@ -12,19 +12,38 @@
                             <p class="slide-text">{{ slide.text }}</p>
                             <h3 class="slide-subtitle">Apprentissage critique validé</h3>
                             <div class="learning-container">
-                            <div v-for="competence in slide.competences" :key="competence.name" class="competence-block">
-                                <h3>{{ competence.name }}</h3>
-                                <div v-for="level in competence.levels" :key="level.level" class="level">
-                                    <h4>{{ level.level }}</h4>
-                                    <!-- Ajoutez cette condition pour grouper les AC du même niveau -->
-                                    <div class="ac-group" v-if="level.acs.length > 1">
-                                        <div class="circle" v-for="ac in level.acs" :key="ac">{{ ac }}</div>
+                                <!-- Modifications à apporter ici -->
+                                <div v-for="competence in slide.competences" :key="competence.name" class="competence-block">
+                                    <h3>{{ competence.name }}</h3>
+                                    <!-- Vérifiez si la compétence 1 est présente -->
+                                    <div v-if="competence.name === 'Compétence 1'">
+                                        <!-- Affichez les niveaux de la compétence 1 -->
+                                        <div v-for="level in competence.levels" :key="level.level" class="level">
+                                            <h4>{{ level.level }}</h4>
+                                            <!-- Ajoutez cette condition pour grouper les AC du même niveau -->
+                                            <div class="ac-group" v-if="level.acs.length > 1">
+                                                <div class="circle" v-for="ac in level.acs" :key="ac"><p>{{ ac }}</p></div>
+                                            </div>
+                                            <!-- Utilisez cette div si vous avez un seul AC par niveau -->
+                                            <div class="circle" v-else><p>{{ level.acs[0] }}</p></div>
+                                        </div>
                                     </div>
-                                    <!-- Utilisez cette div si vous avez un seul AC par niveau -->
-                                    <div class="circle" v-else>{{ level.acs[0] }}</div>
+                                    <!-- Si la compétence 1 n'est pas présente -->
+                                    <div v-else>
+                                        <!-- Vous pouvez placer ici le code pour afficher la compétence 4 -->
+                                        <!-- Assurez-vous d'ajuster la structure HTML selon vos besoins -->
+                                        <div v-for="level in competence.levels" :key="level.level" class="level">
+                                            <h4>{{ level.level }}</h4>
+                                            <!-- Ajoutez cette condition pour grouper les AC du même niveau -->
+                                            <div class="ac-group" v-if="level.acs.length > 1">
+                                                <div class="circle" v-for="ac in level.acs" :key="ac"><p>{{ ac }}</p></div>
+                                            </div>
+                                            <!-- Utilisez cette div si vous avez un seul AC par niveau -->
+                                            <div class="circle" v-else><p>{{ level.acs[0] }}</p></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                         <div class="image-content">
                             <img :src="slide.image" alt="Slide image" class="slide-image"/>
@@ -76,63 +95,113 @@ export default {
     setup() {
     const slides = ref([
     {
-                title: 'Étape 1',
-                text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. 
-                Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae 
-                blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue
-                eget semper malesuada. Phasellus mollis sed dolor sed interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, 
-                id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor 
-                est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.`,
+                title: `Étape 1 : Analyse du cahier des charges`,
+                text: `Grâce au cahier des charges qu' il y a eu, j’ai pu réfléchir à des schéma afin d’avoir une 
+                visualisation de comment gérer l’application et de voir tout ce dont il y a besoin.`,
                 image: image1,
                 competences: [
                     {
                         name: 'Compétence 1',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1', 'AC 2', 'AC 3', 'AC 4'] },
-                            { level: 'Niveau 2', acs: ['AC 1', 'AC 2', 'AC 3', 'AC 4'] }
+                            { level: 'Niveau 1', acs: ['AC 2'] },
                         ]
                     },
-                    {
-                        name: 'Compétence 4',
-                        levels: [
-                            { level: 'Niveau 1', acs: ['AC 1', 'AC 2', 'AC 3'] },
-                            { level: 'Niveau 2', acs: ['AC 1', 'AC 2', 'AC 3', 'AC 4'] }
-                        ]
-                    }
                 ]
             },
             {
-                title: 'Étape 2',
-                text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. 
-                Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae 
-                blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue
-                eget semper malesuada. Phasellus mollis sed dolor sed interdum.`,
+                title:` Étape 2 : Réflexion et conception initiale du modèle de données de l'application`,
+                text: ` J’ai pu réfléchir à un premier MCD à partir des données qui était demandé dans le cahier des charge, 
+                tel que l’agent, la hiérarchie des fonctions, les demandes, …etc`,
                 image: image2,
                 competences: [
                     {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1', 'AC 3'] },
-                            { level: 'Niveau 2', acs: ['AC 2', 'AC 4'] }
+                            { level: 'Niveau 1', acs: ['AC 3'] },
                         ]
-                    }
+                    },
                 ]
             },
             {
-                title: 'Étape 3',
-                text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. 
-                Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae 
-                blandit quam. Phasellus nec nulla libero.`,
+                title: 'Étape 3 : Révision et correction du MCD initial pour résoudre les bugs',
+                text: `Lors de l'avancée du projet j’ai dû corriger le MCD car des données s'ajoutent et des contraintes se formaient. 
+                Notamment lors de la gestion des hiérarchies avec la fonction des agents.`,
                 image: image3,
                 competences: [
                     {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1', 'AC 2'] },
-                            { level: 'Niveau 2', acs: ['AC 1', 'AC 4'] }
+                            { level: 'Niveau 2', acs: ['AC 2', 'AC 3'] },
                         ]
-                    }
+                    },
+                ]
+            },
+            {
+                title: 'Étape 4 : Création de la base de données (BDD) pour le projet',
+                text: `J’ai, grâce au MCD, créé la BDD du projet afin de visualiser des données et de les manipuler.
+                Notamment grâce au requête (PUT, GET, POST et DELETE) de l'API que j’ai développé.`,
+                image: image4,
+                competences: [
+                    {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1', 'AC 3'] },
+                        ]
+                    },
+                ]
+            },
+            {
+                title: 'Étape 5 : Utilisation de Figma pour créer la maquette du site',
+                text: `Afin d’y voir clair sur l’application et de ne pas avancer au hasard, j’ai décidé de créer des 
+                maquettes des pages principales pour les utilisateurs. Cela m’a aidé à coder les pages plus facilement. \n
+                Cela va aussi permettre d’arranger les différents modules de l’app de la manière la plus ergonomique possible.`,
+                image: image4,
+                competences: [
+                    {
+                        name: 'Compétence 1',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 2'] },
+                            { level: 'Niveau 2', acs: ['AC 2'] },
+                        ]
+                    },
+                ]
+            },
+            {
+                title: ` Étape 6 : Développement de l'interface utilisateur avec Vue.js`,
+                text: `J’ai donc créé la vue du projet en mettant les différents modules MVC (Model, Vue, Controller) 
+                qui permettent une vision claire du code.\n
+                J’ai pu élaborer une page de connexion avec des champs qui permettent de se connecter. \n
+                Cela fait partie de l’interface utilisateur.`,
+                image: image4,
+                competences: [
+                    {
+                        name: 'Compétence 1',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1', 'AC 4'] },
+                            { level: 'Niveau 2', acs: ['AC 3'] },
+                        ]
+                    },
+                ]
+            },
+            {
+                title: ` Étape 7 : Implémentation de la gestion des tokens et des utilisateurs`,
+                text: `Afin de compléter la connexion, j’ai élaboré une fonction de gestion de tokens lors de l’identification.\n
+                Tout cela en utilisant un “store” de l’application afin d’avoir la possibilité de réutilisation du code \n
+                Comme il y a un token lors de l'identification, cela va permettre au utilisateur d'être géré et d’avoir certain droit d'utilisation.`,
+                image: image4,
+                competences: [
+                    {
+                        name: 'Compétence 1',
+                        levels: [
+                            { level: 'Niveau 2', acs: ['AC 1', 'AC 3'] },
+                        ]
+                    },
+                    {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 2', acs: ['AC 2'] },
+                        ]
+                    },
                 ]
             }
         ]);
@@ -339,7 +408,7 @@ export default {
 /* Conteneur de la section Apprentissage Critique */
 .learning-container {
     display: flex;
-    justify-content: space-around;
+    margin-left: 5%;
     margin-top: 20px;
 }
 
@@ -350,29 +419,26 @@ export default {
 
 /* Style pour les niveaux */
 .level {
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 
 /* Titre pour les compétences */
 .competence-block h3 {
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 10px;
     color: #252422;
 }
 
 /* Titre pour les niveaux */
 .level h4 {
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 5px;
     color: #EB5E28;
 }
 
-/* Texte des AC */
-.level p {
-    font-size: 14px;
-    color: #252422;
+p {
+    font-size: 12px;
 }
-
 
 .slide-subtitle {
     font-size: 16px;
