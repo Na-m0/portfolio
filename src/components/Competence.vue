@@ -317,7 +317,7 @@ p.text {
 
 .scroll-down {
     position: absolute;
-    bottom: 20px;
+    bottom: 60px;
     text-align-last: center;
     left: 50%;
     transform: translateX(-50%);

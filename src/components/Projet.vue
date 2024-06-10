@@ -2,7 +2,8 @@
     <section class="container-top">
         <h1 class="main-title">PROJET</h1>
         <h1 class="overlay-title">PROJET</h1>
-    <div class="swiper-container slideshow">
+        <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présenté</p>
+        <div class="swiper-container slideshow">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide" v-for="(slide, index) in slides" :key="index">
                     <div class="slide-card">
@@ -19,10 +20,10 @@
 
             <div class="slideshow-pagination"></div>
             <div class="slideshow-navigation">
-                <div class="slideshow-navigation-button prev" @click="prevSlide">
+                <div class="slideshow-navigation-button prev slideshow-navigation-button-L" @click="prevSlide">
                     <i class="fas fa-chevron-left"></i>
                 </div>
-                <div class="slideshow-navigation-button next" @click="nextSlide">
+                <div class="slideshow-navigation-button next slideshow-navigation-button-R" @click="nextSlide">
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
@@ -319,11 +320,15 @@ export default {
 </script>
 
 <style scoped>
+.sous-titre {
+    font-size: 17px;
+    text-align: center;
+}
 
 .slideshow-progress {
     width: 100%;
     height: 5px;
-    background-color: #ccc;
+    background-color: #FFFCF2;
     position: relative;
 }
 
@@ -368,7 +373,7 @@ h1.overlay-title {
 .swiper-container {
     width: 100%;
     max-width: 100%;
-    height: 75vh;
+    height: 101%;
     position: relative;
     overflow: hidden;
 }
@@ -471,8 +476,7 @@ h1.overlay-title {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
+    color: #252422;
     border-radius: 50%;
     cursor: pointer;
     z-index: 1;
@@ -489,9 +493,18 @@ h1.overlay-title {
     right: 55px;
 }
 
-/* Au survol, assombrissez légèrement la couleur de fond */
-.slideshow-navigation-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+.slideshow-navigation-button-L i {
+    transition: transform 0.5s ease-in-out;
+}
+.slideshow-navigation-button-L:hover i {
+    transform: translateX(-10px); /* Décale la flèche vers le bas lorsqu'elle est survolée */
+}
+
+.slideshow-navigation-button-R i {
+    transition: transform 0.5s ease-in-out;
+}
+.slideshow-navigation-button-R:hover i {
+    transform: translateX(10px); /* Décale la flèche vers le bas lorsqu'elle est survolée */
 }
 
   </style>
