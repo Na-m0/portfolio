@@ -2,7 +2,7 @@
     <section class="container-top">
         <h1 class="main-title">PROJET</h1>
         <h1 class="overlay-title">PROJET</h1>
-        <div class="swiper-container slideshow">
+    <div class="swiper-container slideshow">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide" v-for="(slide, index) in slides" :key="index">
                     <div class="slide-card">
@@ -19,9 +19,16 @@
 
             <div class="slideshow-pagination"></div>
             <div class="slideshow-navigation">
-                <div class="slideshow-navigation-button prev">❮</div>
-                <div class="slideshow-navigation-button next">❯</div>
+                <div class="slideshow-navigation-button prev" @click="prevSlide">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slideshow-navigation-button next" @click="nextSlide">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
+        </div>
+        <div class="slideshow-progress">
+            <div class="progress-bar" :style="{ width: progress + '%'}"></div>
         </div>
     </section>
 </template>
@@ -35,168 +42,291 @@ import { TweenMax, Back, Expo, Quart } from 'gsap';
 
 export default {
     setup() {
-        const slides = ref([
-            {
-                title: 'Étape 1',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.',
-                image: '/src/assets/gear5.webp',
-            },
-            {
-                title: 'Meet ocean',
-                text: 'Experience the beauty and mystery of the ocean.',
-                image: 'path/to/image2.jpg',
-            },
-            {
-                title: 'Around the world',
-                text: 'Travel around the world and explore new cultures.',
-                image: 'path/to/image3.jpg',
-            },
-            // Ajoutez d'autres slides ici
-        ]);
+    const slides = ref([
+        {
+            title: 'Étape 1',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor. Duis tincidunt, diam eget eleifend vestibulum, felis mauris consequat velit, id ullamcorper ligula nisi at ante. Duis vitae blandit quam. Phasellus nec nulla libero. Phasellus aliquam ante urna, ac auctor est suscipit vel. Suspendisse sagittis augue eget semper malesuada. Phasellus mollis sed dolor sed interdum.',
+            image: 'src/assets/gear5.webp',
+        },
+        {
+            title: 'Étape 2',
+            text: '',
+            image: '',
+        },
+        {
+            title: 'Étape 3',
+            text: '',
+            image: '',
+        },
+        {
+            title: 'Étape 4',
+            text: '',
+            image: '',
+        },
+        {
+            title: 'Étape 5',
+            text: '',
+            image: '',
+        },
+        {
+            title: 'Étape 6',
+            text: '',
+            image: '',
+        },
+        {
+            title: 'Étape 7',
+            text: '',
+            image: '1',
+        },
+        {
+            title: 'Étape 8',
+            text: '',
+            image: '1',
+        },
+        {
+            title: 'Étape 9',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 10',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 11',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 12',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 13',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 14',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 15',
+            text: '1',
+            image: '1',
+        },
+        {
+            title: 'Étape 16',
+            text: '1',
+            image: '1',
+        },
+        // Ajoutez d'autres slides ici
+    ]);
+
+        let slideshowInstance = null;
+        let progress = ref(0);
 
         onMounted(() => {
-            const slideshow = new Slideshow(document.querySelector('.slideshow'));
+            slideshowInstance = new Slideshow(document.querySelector('.slideshow'));
         });
 
-        class Slideshow {
-            constructor(el) {
-                this.DOM = { el: el };
+    class Slideshow {
+        constructor(el) {
+            this.DOM = { el: el };
 
-                this.config = {
-                    slideshow: {
-                        delay: 3000,
-                        pagination: {
-                            duration: 3,
-                        },
-                    },
-                };
-
-                this.init();
-            }
-            init() {
-                var self = this;
-
-                this.DOM.slideTitle = this.DOM.el.querySelectorAll('.slide-title');
-                this.DOM.slideTitle.forEach((slideTitle) => {
-                    charming(slideTitle);
-                });
-
-                this.slideshow = new Swiper(this.DOM.el, {
-                    loop: true,
-                    autoplay: {
-                        delay: this.config.slideshow.delay,
-                        disableOnInteraction: false,
-                    },
-                    speed: 500,
-                    preloadImages: true,
-                    updateOnImagesReady: true,
+            this.config = {
+                slideshow: {
+                    delay: 3000,
                     pagination: {
-                        el: '.slideshow-pagination',
-                        clickable: true,
-                        bulletClass: 'slideshow-pagination-item',
-                        bulletActiveClass: 'active',
-                        clickableClass: 'slideshow-pagination-clickable',
-                        modifierClass: 'slideshow-pagination-',
-                        renderBullet: function (index, className) {
-                            var slideIndex = index,
-                                number = index <= 8 ? '0' + (slideIndex + 1) : slideIndex + 1;
+                        duration: 3,
+                    },
+                },
+            };
 
-                            var paginationItem = '<span class="slideshow-pagination-item">';
-                            paginationItem += '<span class="pagination-number">' + number + '</span>';
-                            paginationItem = index <= 8 ? paginationItem + '<span class="pagination-separator"><span class="pagination-separator-loader"></span></span>' : paginationItem;
-                            paginationItem += '</span>';
+            this.init();
+        }
+        init() {
+            var self = this;
+            this.DOM.el.addEventListener('touchstart', this.touchStartHandler.bind(this));
+            this.DOM.el.addEventListener('touchend', this.touchEndHandler.bind(this));
 
-                            return paginationItem;
-                        },
-                    },
-                    navigation: {
-                        nextEl: '.slideshow-navigation-button.next',
-                        prevEl: '.slideshow-navigation-button.prev',
-                    },
-                    scrollbar: {
-                        el: '.swiper-scrollbar',
-                    },
-                    on: {
-                        init: function () {
-                            self.animate('next');
-                        },
-                    },
-                });
+            this.DOM.slideTitle = this.DOM.el.querySelectorAll('.slide-title');
+            this.DOM.slideTitle.forEach((slideTitle) => {
+                charming(slideTitle);
+            });
 
-                this.initEvents();
+            this.slideshow = new Swiper(this.DOM.el, {
+                loop: true,
+                autoplay: {
+                    delay: this.config.slideshow.delay,
+                    disableOnInteraction: false,
+                },
+                speed: 500,
+                preloadImages: true,
+                updateOnImagesReady: true,
+                pagination: {
+                    el: '.slideshow-pagination',
+                    clickable: true,
+                    bulletClass: 'slideshow-pagination-item',
+                    bulletActiveClass: 'active',
+                    clickableClass: 'slideshow-pagination-clickable',
+                    modifierClass: 'slideshow-pagination-',
+                    renderBullet: function (index, className) {
+                        var slideIndex = index,
+                            number = index <= 8 ? '0' + (slideIndex + 1) : slideIndex + 1;
+
+                        var paginationItem = '<span class="slideshow-pagination-item">';
+                        paginationItem += '<span class="pagination-number">' + number + '</span>';
+                        paginationItem = index <= 8 ? paginationItem + '<span class="pagination-separator"><span class="pagination-separator-loader"></span></span>' : paginationItem;
+                        paginationItem += '</span>';
+
+                        return paginationItem;
+                    },
+                },
+                navigation: {
+                    nextEl: '.slideshow-navigation-button.next',
+                    prevEl: '.slideshow-navigation-button.prev',
+                },
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+                on: {
+                    init: function () {
+                        self.animate('next');
+                    },
+                },
+            });
+
+            this.initEvents();
+        }
+        touchStartHandler(event) {
+            this.touchStartX = event.touches[0].clientX;
+        }
+        touchEndHandler(event) {
+            const touchEndX = event.changedTouches[0].clientX;
+            const deltaX = touchEndX - this.touchStartX;
+
+            // Mettez à jour la barre de progression uniquement si le glissement est significatif
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    // Glissement vers la droite
+                    this.prevSlide();
+                } else {
+                    // Glissement vers la gauche
+                    this.nextSlide();
+                }
+                this.updateProgress();
             }
-            initEvents() {
-                this.slideshow.on('paginationUpdate', (swiper, paginationEl) => this.animatePagination(swiper, paginationEl));
-                this.slideshow.on('slideNextTransitionStart', () => this.animate('next'));
-                this.slideshow.on('slidePrevTransitionStart', () => this.animate('prev'));
-            }
-            animate(direction = 'next') {
-                this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active'),
-                    this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title'),
-                    this.DOM.activeSlideText = this.DOM.activeSlide.querySelector('.slide-text'),
-                    this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
+        }
+        initEvents() {
+            this.slideshow.on('paginationUpdate', (swiper, paginationEl) => this.animatePagination(swiper, paginationEl));
+            this.slideshow.on('slideNextTransitionStart', () => this.animate('next'));
+            this.slideshow.on('slidePrevTransitionStart', () => this.animate('prev'));
+        }
+        animate(direction = 'next') {
+            this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active'),
+                this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title'),
+                this.DOM.activeSlideText = this.DOM.activeSlide.querySelector('.slide-text'),
+                this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
 
-                this.DOM.activeSlideTitleLetters = direction === 'next' ? this.DOM.activeSlideTitleLetters : [].slice.call(this.DOM.activeSlideTitleLetters).reverse();
+            this.DOM.activeSlideTitleLetters = direction === 'next' ? this.DOM.activeSlideTitleLetters : [].slice.call(this.DOM.activeSlideTitleLetters).reverse();
 
-                this.DOM.oldSlide = direction === 'next' ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
-                if (this.DOM.oldSlide) {
-                    this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title'),
-                        this.DOM.oldSlideText = this.DOM.oldSlide.querySelector('.slide-text'),
-                        this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
-                    this.DOM.oldSlideTitleLetters.forEach((letter, pos) => {
-                        TweenMax.to(letter, .3, {
-                            ease: Quart.easeIn,
-                            delay: (this.DOM.oldSlideTitleLetters.length - pos - 1) * .04,
-                            y: '50%',
-                            opacity: 0
-                        });
-                    });
-                    TweenMax.to(this.DOM.oldSlideText, .3, {
+            this.DOM.oldSlide = direction === 'next' ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
+            if (this.DOM.oldSlide) {
+                this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title'),
+                    this.DOM.oldSlideText = this.DOM.oldSlide.querySelector('.slide-text'),
+                    this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
+                this.DOM.oldSlideTitleLetters.forEach((letter, pos) => {
+                    TweenMax.to(letter, .3, {
                         ease: Quart.easeIn,
+                        delay: (this.DOM.oldSlideTitleLetters.length - pos - 1) * .04,
                         y: '50%',
                         opacity: 0
                     });
-                }
-
-                this.DOM.activeSlideTitleLetters.forEach((letter, pos) => {
-                    TweenMax.to(letter, .6, {
-                        ease: Back.easeOut,
-                        delay: pos * .05,
-                        startAt: { y: '50%', opacity: 0 },
-                        y: '0%',
-                        opacity: 1
-                    });
                 });
-                TweenMax.to(this.DOM.activeSlideText, .6, {
+                TweenMax.to(this.DOM.oldSlideText, .3, {
+                    ease: Quart.easeIn,
+                    y: '50%',
+                    opacity: 0
+                });
+            }
+
+            this.DOM.activeSlideTitleLetters.forEach((letter, pos) => {
+                TweenMax.to(letter, .6, {
                     ease: Back.easeOut,
+                    delay: pos * .05,
                     startAt: { y: '50%', opacity: 0 },
                     y: '0%',
                     opacity: 1
                 });
-            }
-            animatePagination(swiper, paginationEl) {
-                this.DOM.paginationItemsLoader = paginationEl.querySelectorAll('.pagination-separator-loader');
-                this.DOM.activePaginationItem = paginationEl.querySelector('.slideshow-pagination-item.active');
-                this.DOM.activePaginationItemLoader = this.DOM.activePaginationItem.querySelector('.pagination-separator-loader');
-
-                TweenMax.set(this.DOM.paginationItemsLoader, { scaleX: 0 });
-                TweenMax.to(this.DOM.activePaginationItemLoader, this.config.slideshow.pagination.duration, {
-                    startAt: { scaleX: 0 },
-                    scaleX: 1,
-                });
-            }
+            });
+            TweenMax.to(this.DOM.activeSlideText, .6, {
+                ease: Back.easeOut,
+                startAt: { y: '50%', opacity: 0 },
+                y: '0%',
+                opacity: 1
+            });
         }
+        animatePagination(swiper, paginationEl) {
+            this.DOM.paginationItemsLoader = paginationEl.querySelectorAll('.pagination-separator-loader');
+            this.DOM.activePaginationItem = paginationEl.querySelector('.slideshow-pagination-item.active');
+            this.DOM.activePaginationItemLoader = this.DOM.activePaginationItem.querySelector('.pagination-separator-loader');
 
-        return {
+            TweenMax.set(this.DOM.paginationItemsLoader, { scaleX: 0 });
+            TweenMax.to(this.DOM.activePaginationItemLoader, this.config.slideshow.pagination.duration, {
+                startAt: { scaleX: 0 },
+                scaleX: 1,
+            });
+        }
+    }
+
+    return {
             slides,
+            progress,
+            prevSlide() {
+                slideshowInstance.slideshow.slidePrev();
+                this.updateProgress();
+            },
+            nextSlide() {
+                slideshowInstance.slideshow.slideNext();
+                this.updateProgress();
+            },
+            updateProgress() {
+                progress.value = ((slideshowInstance.slideshow.realIndex + 1) / slides.value.length) * 100;
+            }
         };
-    },
+    }
 };
 </script>
 
 <style scoped>
+
+.slideshow-progress {
+    width: 100%;
+    height: 5px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #EB5E28; /* Mettez la couleur verte ici */
+    width: 0%;
+    transition: width 0.3s ease;
+}
+.fa-chevron-right {
+    margin-left: 4px;
+}
+
+.fa-chevron-left {
+    margin-right: 4px;
+}
+
 .container-top {
-    height: 100vh;
+    height: 85vh;
     padding-top: 125px;
     background: #FFFCF2;
 }
@@ -222,7 +352,7 @@ h1.overlay-title {
 .swiper-container {
     width: 100%;
     max-width: 100%;
-    height: 76vh;
+    height: 75vh;
     position: relative;
     overflow: hidden;
 }
@@ -259,12 +389,21 @@ h1.overlay-title {
 .image-content {
     width: 50%;
     align-content: center;
-    text-align: right;
+    text-align: center;
 }
 
 .slide-title {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 10%;
+    position: relative; /* Assurez-vous que l'élément parent est positionné */
+}
+.slide-title::after {
+    content: '';
+    display: block;
+    width: 60px; /* Ajustez la largeur de la barre selon vos besoins */
+    height: 3px; /* Ajustez la hauteur de la barre selon vos besoins */
+    background-color: #252422; /* Ajustez la couleur de la barre selon vos besoins */
+    margin-top: 8px; /* Espace entre le titre et la barre */
 }
 
 .slide-text {
@@ -273,7 +412,7 @@ h1.overlay-title {
 }
 
 .slide-image {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
 }
 
@@ -317,7 +456,7 @@ h1.overlay-title {
     color: #fff;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1;
     transition: background-color 0.3s;
 }
 
@@ -335,4 +474,5 @@ h1.overlay-title {
 .slideshow-navigation-button:hover {
     background-color: rgba(0, 0, 0, 0.7);
 }
+
   </style>
