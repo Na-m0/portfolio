@@ -137,7 +137,7 @@ export default {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
 }
@@ -145,10 +145,10 @@ export default {
 .modal-content {
     position: relative;
     background-color: #fff;
-    margin: auto;
+    margin: 8%;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 60%;
     height: 70%;
     border-radius: 5px;
     text-align: center;
@@ -234,7 +234,7 @@ export default {
     justify-content: space-between;
     padding-top: 125px;
     background-color: #CCC5B9;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
 }
 
@@ -263,7 +263,7 @@ h2 {
 
 p.text {
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 20px;
     color: #252422;
     margin-bottom: 30px;
 }
@@ -273,7 +273,7 @@ p.text {
     color: #252422;
     margin-right: 5%;
     margin-left: 5%;
-    font-size: 1.2vw; /* Taille de la police en fonction de la largeur de l'écran */
+    font-size: 16px; /* Taille de la police en fonction de la largeur de l'écran */
 }
 
 .cards-container {

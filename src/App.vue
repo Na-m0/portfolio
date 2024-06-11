@@ -24,7 +24,7 @@ import Langage from "@/components/Langage.vue";
         <div id="competence" class="content">
           <Competence/>
         </div>
-        <div id="projet" class="content">
+        <div id="projet" class="content-projet">
           <Projet/>
         </div>
         <div id="footer">
@@ -73,6 +73,11 @@ header {
     position: relative; 
     z-index: 1;
 }
+.content-projet {
+  position: relative; 
+  z-index: 0;
+}
+
 @media (min-width: 1024px) {
   header {
     display: flex;

@@ -69,7 +69,7 @@ body {
   background: #252422;
   justify-content: flex-end;
   align-items: flex-end;
-  min-height: 80vh;
+  min-height: 40vh;
 }
 
 .footer {

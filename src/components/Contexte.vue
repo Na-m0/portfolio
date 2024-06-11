@@ -52,7 +52,7 @@ export default {
 .container-top {
     padding-top: 125px;
     background-color: #252422;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
 }
 
@@ -78,7 +78,9 @@ h1.overlay-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 10%;
 }
 
 .text {

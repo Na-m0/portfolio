@@ -1,5 +1,5 @@
 <template>
-    <section class="container-top">
+    <div class="container-top">
         <h1 class="main-title">PROJET</h1>
         <h1 class="overlay-title">PROJET</h1>
         <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présentées</p>
@@ -65,7 +65,7 @@
         <div class="slideshow-progress">
             <div class="progress-bar" :style="{ width: progress + '%' }"></div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>
@@ -632,7 +632,7 @@ p {
     margin-top: 8px;
 }
 .sous-titre {
-    font-size: 17px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -658,7 +658,7 @@ p {
 }
 
 .container-top {
-    height: 85vh;
+    min-height: 100vh;
     padding-top: 125px;
     background: #FFFCF2;
 }
@@ -697,7 +697,7 @@ h1.overlay-title {
 .swiper-container {
     width: 100%;
     max-width: 100%;
-    height: 101%;
+    min-height: 75vh;
     position: relative;
     overflow: hidden;
 }
