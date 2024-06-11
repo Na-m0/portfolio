@@ -16,7 +16,7 @@
                     Le sujet de mon stage était “Création d'une application web de gestion de demandes informatiques en vue de la préparation budgétaire”. 
                     Cette application devait être créée de zéro avec des langages et des frameworks modernes.
                     Je n’avais pas de mission chaque semaine, mais un projet à réaliser seul, sans autres développeurs. Je devais donc voir les obligations 
-                    des clients et faire en fonction de leur besoins
+                    des clients et faire en fonction de leur besoins.
                 </p>
             </div>
             <div class="image">
@@ -88,6 +88,7 @@ h1.overlay-title {
 
 .text p {
     word-spacing: 5px;
+    font-size: 100%;
 }
 
 .image {

@@ -263,6 +263,7 @@ h2 {
 
 p.text {
     text-align: center;
+    font-size: 1.2vw;
     color: #252422;
     margin-bottom: 30px;
 }
@@ -272,7 +273,7 @@ p.text {
     color: #252422;
     margin-right: 5%;
     margin-left: 5%;
-    font-size: 16px;
+    font-size: 1.2vw; /* Taille de la police en fonction de la largeur de l'écran */
 }
 
 .cards-container {
@@ -298,9 +299,7 @@ p.text {
 
 .voir-plus {
     cursor: pointer;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    text-align: right;
     color: #787878;
     text-decoration: none;
     font-weight: normal;
@@ -337,4 +336,5 @@ p.text {
 .scroll-down:hover i {
     transform: translateY(10px); /* Décale la flèche vers le bas lorsqu'elle est survolée */
 }
+
 </style>
