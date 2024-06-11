@@ -19,6 +19,7 @@
     <ul class="menu">
       <li class="menu__item"><a class="menu__link" href="#accueil" @click.prevent="scrollToSection('accueil')">Accueil</a></li>
       <li class="menu__item"><a class="menu__link" href="#contexte" @click.prevent="scrollToSection('contexte')">Contexte</a></li>
+      <li class="menu__item"><a class="menu__link" href="#langage" @click.prevent="scrollToSection('langage')">Technologies</a></li>
         <li class="menu__item"><a class="menu__link" href="#competence" @click.prevent="scrollToSection('competence')">Compétences</a></li>
         <li class="menu__item"><a class="menu__link" href="#projet" @click.prevent="scrollToSection('projet')">Projet</a></li>
     </ul>

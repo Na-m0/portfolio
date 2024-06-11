@@ -8,13 +8,20 @@
                     Lors de cette 2ème année au BUT Informatique, je devais faire ma première
                     découverte du monde du travail dans ce domaine. J’ai donc dû effectuer
                     mon premier stage afin d’en apprendre plus en milieu professionnel.
-                    J'ai donc décidé d'effectuer mon stage à la mairie de Montbéliard d’une
+                    J'ai donc effectuer mon stage à la mairie de Montbéliard d’une
                     durée de 9 semaines, du 22 avril au 21 juin 2024.
+                </p>
+                <br>
+                <p>
+                    Le sujet de mon stage était “Création d'une application web de gestion de demandes informatiques en vue de la préparation budgétaire”. 
+                    Cette application devait être créée de zéro avec des langages et des frameworks modernes.
+                    Je n’avais pas de mission chaque semaine, mais un projet à réaliser seul, sans autres développeurs. Je devais donc voir les obligations 
+                    des clients et faire en fonction de leur besoins
                 </p>
             </div>
             <div class="image">
-                <img src="../assets/gear5.webp" alt="Image descriptive" class="main-image">
-                <img src="../assets/Mairie_de_Montbéliard.jpg" alt="Overlay Image" class="overlay-image">
+                <img src="../assets/bureau.jpg" alt="Image descriptive" class="main-image">
+                <!--<img src="../assets/pngegg.png" alt="Overlay Image" class="overlay-image">-->
             </div>
         </div>
         <div class="scroll-down" id="scrollDown" @click="handleContactClick">
@@ -31,7 +38,7 @@ export default {
         handleContactClick(event) {
             event.preventDefault(); // Empêche le comportement par défaut du clic sur le lien
             // Récupérez l'élément en bas de la page d'accueil
-            const contactSection = document.getElementById('competence');
+            const contactSection = document.getElementById('langage');
             // Faites défiler la page jusqu'à cet élément
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -99,7 +106,7 @@ h1.overlay-title {
     position: absolute;
     top: 62%;
     left: 50%;
-    max-width: 60%;
+    max-width: 80%;
     border-radius: 15px;
 }
 

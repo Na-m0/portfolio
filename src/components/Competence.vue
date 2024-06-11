@@ -10,15 +10,10 @@
                         <i class="icon fas fa-laptop-code"></i>
                     </div>
                     <h2>COMPÉTENCE 1</h2>
-                    <p class="sous-text">Concevoir, gérer, administrer et exploiter les données de l'entreprise et mettre à disposition toutes les informations pour
-                        un bon pilotage de l'entreprise.
-                        – en respectant les réglementations sur le respect de la vie
-                        privée et la protection des données personnelles
-                        – en respectant les enjeux économiques, sociétaux et
-                        écologiques de l'utilisation du stockage de données, ainsi
-                        que les différentes infrastructures (data centers, cloud, etc.)
-                        – en s'appuyant sur des bases mathématiques
-                        – en assurant la cohérence et la qualité</p>
+                    <p class="sous-text">Cette compétence consiste à transformer les besoins des clients en solutions informatiques concrètes. Cela passe par la conception, 
+                        le codage, les tests et l'intégration des applications, tout en veillant à la qualité et à la documentation du code. Le développeur doit être capable de 
+                        créer des applications, de les améliorer et de les maintenir en état de fonctionnement. Il doit également s'assurer que les interfaces utilisateur 
+                        sont faciles à utiliser et accessibles, et que les applications répondent aux attentes grâce à des tests rigoureux.</p>
                 </div>
                 <a @click="openArbitrateDialog('COMPÉTENCE 1', 'icon fas fa-laptop-code', niveau1ListCompetence1, niveau2ListCompetence1)" class="voir-plus">Voir plus</a>
             </div>
@@ -28,12 +23,11 @@
                         <i class="icon fas fa-database"></i>
                     </div>
                     <h2>COMPÉTENCE 4</h2>
-                    <p class="sous-text">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Donec id tellus in diam eleifend
-                        dignissim nec et dolor. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Donec id tellus in diam eleifend dignissim nec et dolor.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id tellus in
-                        diam eleifend dignissim nec et dolor.</p>
+                    <p class="sous-text">
+                        Cette compétence consiste à concevoir, gérer, administrer et exploiter les bases de données de l'entreprise pour fournir les informations 
+                        nécessaires à une gestion efficace. Elle inclut le respect des réglementations sur la protection des données personnelles et la prise en compte 
+                        des enjeux économiques, sociétaux et écologiques. Le développement des bases de données doit suivre un cahier des charges précis, permettant des 
+                        mises à jour, des requêtes et des visualisations efficaces, tout en optimisant les modèles de données et en assurant leur sécurité et confidentialité.</p>
                 </div>
                 <a @click="openArbitrateDialog('COMPÉTENCE 4', 'icon fas fa-database', niveau1ListCompetence4, niveau2ListCompetence4)" class="voir-plus">Voir plus</a>
             </div>
@@ -291,6 +285,7 @@ p.text {
 }
 
 .card {
+    border-radius: 10px;
     background-color: #FFFCF2;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);

@@ -7,6 +7,7 @@
             <ul class="nav-links">
                 <li><a href="#accueil" @click.prevent="scrollToSection('accueil')">Accueil</a></li>
                 <li><a href="#contexte" @click.prevent="scrollToSection('contexte')">Contexte</a></li>
+                <li><a href="#langage" @click.prevent="scrollToSection('langage')">Technologies</a></li>
                 <li><a href="#competence" @click.prevent="scrollToSection('competence')">Compétences</a></li>
                 <li><a href="#projet" @click.prevent="scrollToSection('projet')">Projet</a></li>
                 <li><a href="#contact" @click.prevent="scrollToSection('footer')">Contact</a></li>

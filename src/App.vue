@@ -5,6 +5,7 @@ import Competence from './components/Competence.vue';
 import Contexte from './components/Contexte.vue';
 import Projet from './components/Projet.vue';
 import Home from "@/components/Home.vue";
+import Langage from "@/components/Langage.vue";
 
 </script>
 
@@ -14,8 +15,11 @@ import Home from "@/components/Home.vue";
         <div id="accueil">
             <Home/>
         </div>
-      <div id="contexte" class="content">
+        <div id="contexte" class="content">
           <Contexte/>
+        </div>
+        <div id="langage" class="content">
+          <Langage/>
         </div>
         <div id="competence" class="content">
           <Competence/>
