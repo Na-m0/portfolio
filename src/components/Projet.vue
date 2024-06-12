@@ -1,94 +1,87 @@
 <template>
     <div class="container-top">
-        <h1 class="main-title">PROJET</h1>
-        <h1 class="overlay-title">PROJET</h1>
-        <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présentées</p>
-        <div class="swiper-container slideshow">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide slide" v-for="(slide, index) in slides" :key="index">
-                    <div class="slide-card">
-                        <div class="text-content">
-                            <h2 class="slide-title">{{ slide.title }}</h2>
-                            <p class="slide-text">{{ slide.text }}</p>
-                            <h3 class="slide-subtitle">Apprentissage critique validé</h3>
-                            <div class="learning-container">
-                                <!-- Modifications à apporter ici -->
-                                <div v-for="competence in slide.competences" :key="competence.name" class="competence-block">
-                                    <h3>{{ competence.name }}</h3>
-                                    <!-- Vérifiez si la compétence 1 est présente -->
-                                    <div v-if="competence.name === 'Compétence 1'">
-                                        <!-- Affichez les niveaux de la compétence 1 -->
-                                        <div v-for="level in competence.levels" :key="level.level" class="level">
-                                            <h4>{{ level.level }}</h4>
-                                            <!-- Ajoutez cette condition pour grouper les AC du même niveau -->
-                                            <div class="ac-group" v-if="level.acs.length > 1">
-                                                <div class="circle" v-for="ac in level.acs" :key="ac"><p>{{ ac }}</p></div>
-                                            </div>
-                                            <!-- Utilisez cette div si vous avez un seul AC par niveau -->
-                                            <div class="circle" v-else><p>{{ level.acs[0] }}</p></div>
-                                        </div>
-                                    </div>
-                                    <!-- Si la compétence 1 n'est pas présente -->
-                                    <div v-else>
-                                        <!-- Vous pouvez placer ici le code pour afficher la compétence 4 -->
-                                        <!-- Assurez-vous d'ajuster la structure HTML selon vos besoins -->
-                                        <div v-for="level in competence.levels" :key="level.level" class="level">
-                                            <h4>{{ level.level }}</h4>
-                                            <!-- Ajoutez cette condition pour grouper les AC du même niveau -->
-                                            <div class="ac-group" v-if="level.acs.length > 1">
-                                                <div class="circle" v-for="ac in level.acs" :key="ac"><p>{{ ac }}</p></div>
-                                            </div>
-                                            <!-- Utilisez cette div si vous avez un seul AC par niveau -->
-                                            <div class="circle" v-else><p>{{ level.acs[0] }}</p></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="image-content">
-                            <img :src="slide.image" alt="Slide image" class="slide-image"/>
-                        </div>
+      <h1 class="main-title">PROJET</h1>
+      <h1 class="overlay-title">PROJET</h1>
+      <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présentées</p>
+      <div class="swiper-container slideshow">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide" v-for="(slide, index) in slides" :key="index">
+            <div class="slide-card">
+              <div class="text-content">
+                <h2 class="slide-title">{{ slide.title }}</h2>
+                <p class="slide-text">{{ slide.text }}</p>
+                <h3 class="slide-subtitle">Apprentissage critique validé</h3>
+                <div class="learning-container">
+                  <!-- Affichage des compétences -->
+                  <div v-for="competence in slide.competences" :key="competence.name" class="competence-block">
+                    <h3>{{ competence.name }}</h3>
+                    <div v-for="level in competence.levels" :key="level.level" class="level">
+                      <h4>{{ level.level }}</h4>
+                      <div class="ac-group" v-if="level.acs.length > 1">
+                        <div class="circle" v-for="ac in level.acs" :key="ac"><p>{{ ac }}</p></div>
+                      </div>
+                      <div class="circle" v-else><p>{{ level.acs[0] }}</p></div>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <div class="image-content image-container">
+                <img :src="slide.images[0]" alt="Slide image" class="slide-image" @click="openImage(slide.images, 0)"/>
+                <div class="image-indicators">
+                  <div v-for="(image, imgIndex) in slide.images" :key="imgIndex" @click="goToImage(index, imgIndex)" :class="{ active: imgIndex === currentImageIndex }" class="indicator"></div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="slideshow-navigation">
+          <div class="slideshow-navigation-button prev slideshow-navigation-button-L" @click="prevSlide">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="slideshow-navigation-button next slideshow-navigation-button-R" @click="nextSlide">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="slideshow-progress">
+        <div class="progress-bar" :style="{ width: progress + '%' }"></div>
+      </div>
 
-            <div class="slideshow-pagination"></div>
-            <div class="slideshow-navigation">
-                <div class="slideshow-navigation-button prev slideshow-navigation-button-L" @click="prevSlide">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div class="slideshow-navigation-button next slideshow-navigation-button-R" @click="nextSlide">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div>
+      <!-- Modal pour l'affichage plein écran des images -->
+      <div v-if="fullscreenImage" class="fullscreen-image-modal">
+        <button class="close-button" @click="closeImage">✖</button>
+        <button @click="prevModalImage" class="modal-nav-button left"><i class="fas fa-chevron-left"></i></button>
+        <img :src="fullscreenImage" alt="Fullscreen image"/>
+        <button @click="nextModalImage" class="modal-nav-button right"><i class="fas fa-chevron-right"></i></button>
+        <div class="image-indicators">
+          <div v-for="(image, imgIndex) in modalImages" :key="imgIndex" @click="setCurrentImageIndex(imgIndex)" :class="{ active: imgIndex === currentImageIndex }" class="indicator"></div>
         </div>
-        <div class="slideshow-progress">
-            <div class="progress-bar" :style="{ width: progress + '%' }"></div>
-        </div>
+      </div>
     </div>
-</template>
-
+  </template>
+  
+  
 <script>
 import { onMounted, ref } from 'vue';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import charming from 'charming';
 import { TweenMax, Back, Expo, Quart } from 'gsap';
-import image1 from '../assets/Mairie_de_Montbéliard.jpg';
-import image2 from '../assets/Mairie_de_Montbéliard.jpg';
-import image3 from '../assets/Mairie_de_Montbéliard.jpg';
-import image4 from '../assets/Mairie_de_Montbéliard.jpg';
-import image5 from '../assets/Mairie_de_Montbéliard.jpg';
-import image6 from '../assets/Mairie_de_Montbéliard.jpg';
-import image7 from '../assets/Mairie_de_Montbéliard.jpg';
-import image8 from '../assets/Mairie_de_Montbéliard.jpg';
-import image9 from '../assets/Mairie_de_Montbéliard.jpg';
-import image10 from '../assets/Mairie_de_Montbéliard.jpg';
-import image11 from '../assets/Mairie_de_Montbéliard.jpg';
-import image12 from '../assets/Mairie_de_Montbéliard.jpg';
-import image13 from '../assets/Mairie_de_Montbéliard.jpg';
-import image14 from '../assets/Mairie_de_Montbéliard.jpg';
-import image15 from '../assets/Mairie_de_Montbéliard.jpg';
+import image1 from '../assets/projet/photo/plan.jpg';
+import image2 from '../assets/projet/photo/plan2.jpg';
+import image3 from '../assets/projet/photo/schema1.jpg';
+import image4 from '../assets/projet/photo/schema2.jpg';
+import image5 from '../assets/projet/photo/schema3.jpg';
+
+import image6 from '../assets/projet/photo/exemple_table.jpg';
+import image7 from '../assets/projet/screen/premier_mcd_créé.png';
+
+import image8 from '../assets/projet/screen/deuxième_mcd_avec_modif_agent.png';
+import image9 from '../assets/projet/screen/troisième_mcd_avec_pj.png';
+
+//import image4 from '../assets/projet/';
+
+
 
 export default {
     setup() {
@@ -97,7 +90,7 @@ export default {
                title: `Étape 1 : Analyse du cahier des charges`,
                text: `Grâce au cahier des charges qu' il y a eu, j’ai pu réfléchir à des schéma afin d’avoir une
                visualisation de comment gérer l’application et de voir tout ce dont il y a besoin.`,
-               image: image1,
+               images: [image1,image2,image3,image4,image5], // Liste des images pour cette slide
                competences: [
                    {
                        name: 'Compétence 1',
@@ -111,7 +104,7 @@ export default {
                title:`Étape 2 : Réflexion et conception initiale du modèle de données de l'application`,
                text: ` J’ai pu réfléchir à un premier MCD à partir des données qui était demandé dans le cahier des charge,
                tel que l’agent, la hiérarchie des fonctions, les demandes, …etc`,
-               image: image2,
+               images: [image6,image7],
                competences: [
                    {
                        name: 'Compétence 4',
@@ -125,7 +118,7 @@ export default {
                title: 'Étape 3 : Révision et correction du MCD initial pour résoudre les bugs',
                text: `Lors de l'avancée du projet j’ai dû corriger le MCD car des données s'ajoutent et des contraintes se formaient.
                Notamment lors de la gestion des hiérarchies avec la fonction des agents.`,
-               image: image3,
+               images: [image8,image9],
                competences: [
                    {
                        name: 'Compétence 4',
@@ -139,7 +132,7 @@ export default {
                title: 'Étape 4 : Création de la base de données (BDD) pour le projet',
                text: `J’ai, grâce au MCD, créé la BDD du projet afin de visualiser des données et de les manipuler.
                Notamment grâce au requête (PUT, GET, POST et DELETE) de l'API que j’ai développé.`,
-               image: image4,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 4',
@@ -154,7 +147,7 @@ export default {
                text: `Afin d’y voir clair sur l’application et de ne pas avancer au hasard, j’ai décidé de créer des
                maquettes des pages principales pour les utilisateurs. Cela m’a aidé à coder les pages plus facilement. \n
                Cela va aussi permettre d’arranger les différents modules de l’app de la manière la plus ergonomique possible.`,
-               image: image5,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -171,7 +164,7 @@ export default {
                qui permettent une vision claire du code.\n
                J’ai pu élaborer une page de connexion avec des champs qui permettent de se connecter. \n
                Cela fait partie de l’interface utilisateur.`,
-               image: image6,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -188,7 +181,7 @@ export default {
                 Tout cela en utilisant un “store” de l’application afin d’avoir la possibilité de réutilisation du code \n
                 Comme il y a un token lors de l'identification, cela va permettre au utilisateur d'être géré et
                 d’avoir certain droit d'utilisation.`,
-                image: image7,
+                images: [],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -209,7 +202,7 @@ export default {
                 text: `J’ai créé des requêtes pour la page des demandes afin d’afficher les demandes du service
                 auquel l’agent est relié. Ces requêtes vont permettre d’afficher toutes les demandes dans la vue de l’application.
                 J’ai donc testé si la visualisation affichait correctement les bonnes demandes liées au services.`,
-                image: image8,
+                images: [],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -230,7 +223,7 @@ export default {
                title: `Étape 9 : Limitation des actions des différents agents`,
                text: `Les agents devaient avoir une fonction afin d’avoir une hiérarchie sur les arbitrages et la
                visualisation des données des demandes. j’ai donc modifier le MCD afin de régler les problèmes de hiérarchies.`,
-               image: image9,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 4',
@@ -248,7 +241,7 @@ export default {
                des demandes. Toutes les requêtes interrogent la BDD pour obtenir les données souhaitées qui sont ensuite
                affichées dans la vue de l’utilisateur. Tout cela en vérifiant si les données récupérées sont bien les
                bonnes et qu’aucun bug n’intervient.`,
-               image: image10,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -272,7 +265,7 @@ export default {
                informations écrites dans le cahier des charge a mettre lors de l’ajout et de la modification.
                Les données sont donc modifier, ajouter et visualiser grâce au requete de l’API, cela va donc permettre une
                gestion des demandes par les utilisateurs. Et toujours en vérifiant que les données sont bien ajoutées ou modifiées.`,
-               image: image11,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -298,7 +291,7 @@ export default {
                pourront donc plus avoir accès au modification ou au suppression de la demande lorsque celle- ci sera
                arbitrée. Cela permet donc une sécurité de gestion de données selon la fonction des utilisateurs. J’ai donc
                testé si les utilisateurs lambda en dessous des responsables avaient accès ou non à certaines fonctions.`,
-               image: image12,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -326,7 +319,7 @@ export default {
                après avoir stocké le nom des fichiers et leurs chemins dans la table fichier, j’ai utilisé des requêtes
                de l’API afin de récupérer le fichier et de l’afficher dans la vue de la demande et d’avoir la possibilité
                de le télécharger. Tout cela en testant que les fichier sont bien téléchargeable et afficher a la demande modifié.`,
-               image: image13,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -351,7 +344,7 @@ export default {
                upload. J’ai donc réfléchi à une autre manière de stocker ces fichiers en créer un autre dossier dans le
                fichier upload avec comme nom l’id de la demande choisie. Cela ne pose donc plus de problème lorsque deux
                demandes différentes possèdent le même nom de fichier.`,
-               image: image14,
+               images: [],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -366,7 +359,7 @@ export default {
             text: ` Lors de l’arbitrage des demandes, on m’a demandé d’ajouter un motif si c' est un refus ou une
             validation. J’ai donc élaboré cette fonctionnalité qui s’effectue aussi de façon hiérarchique avec un
             motif de responsable, de DGA, de DGS,... . Il a donc fallu une modification du MCD de l’application.`,
-            image: image15,
+            images: [],
             competences: [
                 {
                     name: 'Compétence 1',
@@ -386,6 +379,9 @@ export default {
 
         let slideshowInstance = null;
         let progress = ref(0);
+        const fullscreenImage = ref(null);
+        const currentImageIndex = ref(0);
+        const modalImages = ref([]);
 
         onMounted(() => {
             slideshowInstance = new Slideshow(document.querySelector('.slideshow'));
@@ -408,8 +404,9 @@ export default {
         }
         init() {
             var self = this;
-            this.DOM.el.addEventListener('touchstart', this.touchStartHandler.bind(this));
-            this.DOM.el.addEventListener('touchend', this.touchEndHandler.bind(this));
+            this.DOM.el.addEventListener('touchstart', this.touchStartHandler.bind(this), { passive: true });
+            this.DOM.el.addEventListener('touchend', this.touchEndHandler.bind(this), { passive: true });
+
 
             this.DOM.slideTitle = this.DOM.el.querySelectorAll('.slide-title');
             this.DOM.slideTitle.forEach((slideTitle) => {
@@ -542,25 +539,129 @@ export default {
     }
 
     return {
-            slides,
-            progress,
-            prevSlide() {
-                slideshowInstance.slideshow.slidePrev();
-                this.updateProgress();
-            },
-            nextSlide() {
-                slideshowInstance.slideshow.slideNext();
-                this.updateProgress();
-            },
-            updateProgress() {
-                progress.value = ((slideshowInstance.slideshow.realIndex + 1) / slides.value.length) * 100;
-            }
-        };
-    }
+      slides,
+      progress,
+      fullscreenImage,
+      modalImages,
+      currentImageIndex,
+      activeSlideIndex: 0, // Indice de la diapositive actuellement active
+    goToSlide(index) {
+      this.activeSlideIndex = index; // Met à jour l'indice de la diapositive active
+    },
+      prevSlide() {
+        slideshowInstance.slideshow.slidePrev();
+        this.updateProgress();
+      },
+      nextSlide() {
+        slideshowInstance.slideshow.slideNext();
+        this.updateProgress();
+      },
+      updateProgress() {
+        progress.value = ((slideshowInstance.slideshow.realIndex + 1) / slides.value.length) * 100;
+      },
+      openImage(images, index) {
+        modalImages.value = images;
+        currentImageIndex.value = index;
+        fullscreenImage.value = images[index];
+      },
+      closeImage() {
+        fullscreenImage.value = null;
+      },
+      prevModalImage() {
+        if (currentImageIndex.value > 0) {
+          currentImageIndex.value--;
+          fullscreenImage.value = modalImages.value[currentImageIndex.value];
+        }
+      },
+      nextModalImage() {
+        if (currentImageIndex.value < modalImages.value.length - 1) {
+          currentImageIndex.value++;
+          fullscreenImage.value = modalImages.value[currentImageIndex.value];
+        }
+      },
+    };
+  },
 };
 </script>
 
 <style scoped>
+.image-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc; /* Couleur des points inactifs */
+  border-radius: 50%;
+  margin: 0 5px; /* Espacement entre les points */
+  cursor: pointer; /* Curseur de pointeur */
+}
+
+.indicator.active {
+  background-color: #EB5E28; /* Couleur du point actif */
+}
+.image-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; 
+}
+
+.slide-image {
+  max-width: 100%;
+  max-height: 90%;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .slide-image {
+  transform: scale(1.05); 
+}
+.fullscreen-image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.fullscreen-image-modal img {
+  max-width: 80%;
+  max-height: 60%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.close-button {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+.modal-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+.modal-nav-button.left {
+  left: 20px;
+}
+.modal-nav-button.right {
+  right: 20px;
+}
 /* Nouveau style pour les groupes d'AC */
 .ac-group {
     display: flex; /* Afficher les AC en ligne */
