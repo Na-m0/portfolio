@@ -77,7 +77,31 @@ import image6 from '../assets/projet/photo/exemple_table.jpg';
 import image7 from '../assets/projet/screen/premier_mcd_créé.png';
 
 import image8 from '../assets/projet/screen/deuxième_mcd_avec_modif_agent.png';
-import image9 from '../assets/projet/screen/troisième_mcd_avec_pj.png';
+
+import image10 from '../assets/Postgresql.png';
+import image11 from '../assets/projet/screen/API_1.png';
+import image12 from '../assets/projet/screen/requete.jpg';
+
+import image13 from '../assets/projet/screen/all_figma.png';
+import image14 from '../assets/projet/screen/home_figma.png';
+
+import image15 from '../assets/projet/screen/vue_dossier1.png';
+
+import image16 from '../assets/projet/screen/token_exemple.png';
+import image17 from '../assets/projet/code/generer_token.png';
+import image18 from '../assets/projet/code/token_exemple.png';
+
+import image19 from '../assets/projet/code/demandes_service.png';
+
+import image20 from '../assets/projet/screen/accueil_vue.png';
+import image21 from '../assets/projet/screen/demandes_vue.png';
+
+import image22 from '../assets/projet/screen/accueil_vue_2.png';
+
+import image23 from '../assets/projet/code/demandes_service.png';
+import image24 from '../assets/projet/code/statut.png';
+import image25 from '../assets/projet/code/statut_script.png';
+import image26 from '../assets/projet/code/budget.png';
 
 //import image4 from '../assets/projet/';
 
@@ -115,24 +139,10 @@ export default {
                ]
            },
            {
-               title: 'Étape 3 : Révision et correction du MCD initial pour résoudre les bugs',
-               text: `Lors de l'avancée du projet j’ai dû corriger le MCD car des données s'ajoutent et des contraintes se formaient.
-               Notamment lors de la gestion des hiérarchies avec la fonction des agents.`,
-               images: [image8,image9],
-               competences: [
-                   {
-                       name: 'Compétence 4',
-                       levels: [
-                           { level: 'Niveau 2', acs: ['AC 2', 'AC 3'] },
-                       ]
-                   },
-               ]
-           },
-           {
-               title: 'Étape 4 : Création de la base de données (BDD) pour le projet',
+               title: 'Étape 3 : Création de la base de données (BDD) pour le projet',
                text: `J’ai, grâce au MCD, créé la BDD du projet afin de visualiser des données et de les manipuler.
                Notamment grâce au requête (PUT, GET, POST et DELETE) de l'API que j’ai développé.`,
-               images: [],
+               images: [image11, image10, image12],
                competences: [
                    {
                        name: 'Compétence 4',
@@ -143,11 +153,11 @@ export default {
                ]
            },
            {
-               title: 'Étape 5 : Utilisation de Figma pour créer la maquette du site',
+               title: 'Étape 4 : Utilisation de Figma pour créer la maquette du site',
                text: `Afin d’y voir clair sur l’application et de ne pas avancer au hasard, j’ai décidé de créer des
                maquettes des pages principales pour les utilisateurs. Cela m’a aidé à coder les pages plus facilement. \n
                Cela va aussi permettre d’arranger les différents modules de l’app de la manière la plus ergonomique possible.`,
-               images: [],
+               images: [image14,image13],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -159,12 +169,12 @@ export default {
                ]
            },
            {
-               title: `Étape 6 : Développement de l'interface utilisateur avec Vue.js`,
+               title: `Étape 5 : Développement de l'interface utilisateur avec Vue.js`,
                text: `J’ai donc créé la vue du projet en mettant les différents modules MVC (Model, Vue, Controller)
                qui permettent une vision claire du code.\n
                J’ai pu élaborer une page de connexion avec des champs qui permettent de se connecter. \n
                Cela fait partie de l’interface utilisateur.`,
-               images: [],
+               images: [image15],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -176,12 +186,12 @@ export default {
                ]
            },
            {
-                title: `Étape 7 : Implémentation de la gestion des tokens et des utilisateurs`,
+                title: `Étape 6 : Implémentation de la gestion des tokens et des utilisateurs`,
                 text: `Afin de compléter la connexion, j’ai élaboré une fonction de gestion de tokens lors de l’identification.\n
                 Tout cela en utilisant un “store” de l’application afin d’avoir la possibilité de réutilisation du code \n
                 Comme il y a un token lors de l'identification, cela va permettre au utilisateur d'être géré et
                 d’avoir certain droit d'utilisation.`,
-                images: [],
+                images: [image16, image17, image18],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -198,11 +208,11 @@ export default {
                 ]
             },
            {
-                title: `Étape 8 : Affichage des demandes du service lors de la connexion de l'utilisateur`,
+                title: `Étape 7 : Affichage des demandes du service lors de la connexion de l'utilisateur`,
                 text: `J’ai créé des requêtes pour la page des demandes afin d’afficher les demandes du service
                 auquel l’agent est relié. Ces requêtes vont permettre d’afficher toutes les demandes dans la vue de l’application.
                 J’ai donc testé si la visualisation affichait correctement les bonnes demandes liées au services.`,
-                images: [],
+                images: [image19],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -220,17 +230,32 @@ export default {
                 ]
             },
            {
-               title: `Étape 9 : Limitation des actions des différents agents`,
+               title: `Étape 8 : Limitation des actions des différents agents`,
                text: `Les agents devaient avoir une fonction afin d’avoir une hiérarchie sur les arbitrages et la
                visualisation des données des demandes. j’ai donc modifier le MCD afin de régler les problèmes de hiérarchies.`,
-               images: [],
+               images: [image8],
                competences: [
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 2', acs: ['AC 1'] },
+                           { level: 'Niveau 2', acs: ['AC 1','AC 2', 'AC 3'] },
                        ]
                    },
+               ]
+           },
+           {
+               title: `Étape 9 : Amélioration graphique de l'application`,
+               text: `Afin de rendre comme le figma j'ai refait tout le design de l'application. Cela m'a pris beaucoup de temps mais cela étais tres important 
+               pour l'experience utilisateur, il fallait que les personnes qui test l'application, puissent apprécier et surtout comprendre ce qu'il voyait`,
+               images: [image20, image21],
+               competences: [
+                   {
+                       name: 'Compétence 1',
+                       levels: [
+                           { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
+                           { level: 'Niveau 2', acs: ['AC 2'] },
+                       ]
+                   }
                ]
            },
            {
@@ -241,7 +266,7 @@ export default {
                des demandes. Toutes les requêtes interrogent la BDD pour obtenir les données souhaitées qui sont ensuite
                affichées dans la vue de l’utilisateur. Tout cela en vérifiant si les données récupérées sont bien les
                bonnes et qu’aucun bug n’intervient.`,
-               images: [],
+               images: [image22, image26, image23, image24, image25],
                competences: [
                    {
                        name: 'Compétence 1',
