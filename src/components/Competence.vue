@@ -9,11 +9,11 @@
                     <div class="icon-circle">
                         <i class="icon fas fa-laptop-code"></i>
                     </div>
-                    <h2>COMPÉTENCE 1</h2>
+                    <h2>COMPÉTENCE 1 <span class="comp">| Réaliser un développement d’application</span></h2>
                     <p class="sous-text">Cette compétence consiste à transformer les besoins des clients en solutions informatiques concrètes. Cela passe par la conception, 
                         le codage, les tests et l'intégration des applications, tout en veillant à la qualité et à la documentation du code. Le développeur doit être capable de 
                         créer des applications, de les améliorer et de les maintenir en état de fonctionnement. Il doit également s'assurer que les interfaces utilisateur 
-                        sont faciles à utiliser et accessibles, et que les applications répondent aux attentes grâce à des tests rigoureux.</p>
+                        sont faciles à utiliser et accessibles, et que les applications répondent aux attentes grâce à des tests.</p>
                 </div>
                 <a @click="openArbitrateDialog('COMPÉTENCE 1', 'icon fas fa-laptop-code', niveau1ListCompetence1, niveau2ListCompetence1)" class="voir-plus">Voir plus</a>
             </div>
@@ -22,7 +22,7 @@
                     <div class="icon-circle">
                         <i class="icon fas fa-database"></i>
                     </div>
-                    <h2>COMPÉTENCE 4</h2>
+                    <h2>COMPÉTENCE 4 <span class="comp">| Gérer des données de l’information</span></h2>
                     <p class="sous-text">
                         Cette compétence consiste à concevoir, gérer, administrer et exploiter les bases de données de l'entreprise pour fournir les informations 
                         nécessaires à une gestion efficace. Elle inclut le respect des réglementations sur la protection des données personnelles et la prise en compte 
@@ -76,24 +76,24 @@ export default {
             currentDescriptionList2: [],
             // Exemples de listes pour les compétences
             niveau1ListCompetence1: [
-                'AC 1 Implémenter des conceptions simples',
-                'AC 2 Élaborer des conceptions simples',
-                'AC 3 Faire des essais et évaluer leurs résultats en regard des spécifications',
-                'AC 4 Développer des interfaces utilisateurs'],
+                'AC 1 | Implémenter des conceptions simples',
+                'AC 2 | Élaborer des conceptions simples',
+                'AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications',
+                'AC 4 | Développer des interfaces utilisateurs'],
             niveau2ListCompetence1: [
-                'AC 1 Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
-                'AC 2 Appliquer des principes d’accessibilité et d’ergonomie',
-                'AC 3 Adopter de bonnes pratiques de conception et de programmation',
-                'AC 4 Vérifier et valider la qualité de l’application par les tests'],
+                'AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
+                'AC 2 | Appliquer des principes d’accessibilité et d’ergonomie',
+                'AC 3 | Adopter de bonnes pratiques de conception et de programmation',
+                'AC 4 | Vérifier et valider la qualité de l’application par les tests'],
             niveau1ListCompetence4: [
-                'AC 1 Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)',
-                'AC 2 Visualiser des données',
-                'AC 3 Concevoir une base de données relationnelle à partir d’un cahier des charges'],
+                'AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)',
+                'AC 2 | Visualiser des données',
+                'AC 3 | Concevoir une base de données relationnelle à partir d’un cahier des charges'],
             niveau2ListCompetence4: [
-                'AC 1 Optimiser les modèles de données de l’entreprise',
-                'AC 2 Assurer la confidentialité des données (intégrité et sécurité)',
-                'AC 3 Organiser la restitution de données à travers la programmation et la visualisation',
-                'AC 4 Manipuler des données hétérogènes'],
+                'AC 1 | Optimiser les modèles de données de l’entreprise',
+                'AC 2 | Assurer la confidentialité des données (intégrité et sécurité)',
+                'AC 3 | Organiser la restitution de données à travers la programmation et la visualisation',
+                'AC 4 | Manipuler des données hétérogènes'],
         }
     },
     methods: {
@@ -121,6 +121,9 @@ export default {
 </script>
 
 <style scoped>
+.comp {
+    font-weight: normal;
+}
 .arbitrage {
     display: flex;
     flex-direction: column;
@@ -257,6 +260,7 @@ h1.overlay-title {
 }
 
 h2 {
+    text-align: center;
     color: #252422;
     margin-bottom: 20px;
 }

@@ -103,8 +103,37 @@ import image24 from '../assets/projet/code/statut.png';
 import image25 from '../assets/projet/code/statut_script.png';
 import image26 from '../assets/projet/code/budget.png';
 
-//import image4 from '../assets/projet/';
+import image31 from '../assets/projet/screen/boutton_vue.png';
+import image27 from '../assets/projet/screen/modifier_demande_vue.png';
+import image28 from '../assets/projet/code/modif_demande.png';
+import image29 from '../assets/projet/screen/ajout_demande_vue.png';
+import image30 from '../assets/projet/code/ajout_demande.png';
 
+import image32 from '../assets/projet/screen/dg_services_vue.png';
+import image33 from '../assets/projet/code/data_fonction.png';
+import image34 from '../assets/projet/code/service_dg.png';
+import image35 from '../assets/projet/code/services_dg.png';
+
+import image36 from '../assets/projet/screen/arbitrage_vue.png';
+import image37 from '../assets/projet/screen/arbitrage_fenettre_vue.png';
+import image38 from '../assets/projet/code/insert_statut.png';
+import image39 from '../assets/projet/code/modif_statut_service.png';
+import image40 from '../assets/projet/code/submit_fenettre.png';
+import image41 from '../assets/projet/code/submit_fonction.png';
+import image42 from '../assets/projet/code/statut_couleur.png';
+
+import image43 from '../assets/projet/screen/troisième_mcd_avec_pj.png';
+import image44 from '../assets/projet/screen/ajout_fichier_avant.png';
+import image45 from '../assets/projet/screen/ajout_fichier_test.png';
+import image46 from '../assets/projet/screen/dossier_upload.png';
+
+import image51 from '../assets/projet/screen/upload_fichier_id.png';
+
+
+import image47 from '../assets/projet/screen/motif_arbitrage_vue.png';
+import image48 from '../assets/projet/screen/motif_demande.png';
+import image49 from '../assets/projet/code/ajout_motif.png';
+import image50 from '../assets/projet/code/motif_ajout.png';
 
 
 export default {
@@ -290,7 +319,7 @@ export default {
                informations écrites dans le cahier des charge a mettre lors de l’ajout et de la modification.
                Les données sont donc modifier, ajouter et visualiser grâce au requete de l’API, cela va donc permettre une
                gestion des demandes par les utilisateurs. Et toujours en vérifiant que les données sont bien ajoutées ou modifiées.`,
-               images: [],
+               images: [image31, image27, image28, image29, image30],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -308,15 +337,39 @@ export default {
                ]
            },
            {
-               title: `Étape 12 : Implémentation de la fonctionnalité d'arbitrage des demandes`,
+            title: `Étape 12 : Implémentation de la connexion d'un Directeur Général Adjoint`,
+            text: `Dans cette aplication il y aura une hierarchie des agents, il faut donc grace au fonction ajouter
+            dans la table gérer qui aura certain droit dans la vue. J'ai donc implémenter des fonctions afin de
+            différencier un agent commun d'un directeur. Le directeur aura acces a la liste des services qu'il gere et pourra donc
+            voir, modifier ou supprimer les demandes de ses services.`,
+            images: [image32, image33, image34, image35],
+            competences: [
+                {
+                    name: 'Compétence 1',
+                    levels: [
+                        { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
+                        { level: 'Niveau 2', acs: ['AC 1', 'AC 2'] },
+                    ]
+                },
+                {
+                    name: 'Compétence 4',
+                    levels: [
+                        { level: 'Niveau 1', acs: ['AC 1','AC 2'] },
+                        { level: 'Niveau 2', acs: ['AC 1','AC 2'] },
+                    ]
+                },
+            ]
+        },
+           {
+               title: `Étape 13 : Implémentation de la fonctionnalité d'arbitrage des demandes`,
                text: `Comme le but de l’application est de gérer des demandes selon différentes hiérarchies,
                j’ai donc élaboré le système d’arbitrage de la demande qui update le statut de la demande lors de
                la validation ou le refus de la demande. Et cela change le stade de validation lorsque le compte
                d’un responsable ou un directeur arbitre la demande. Les utilisateurs en dessous des directeurs ne
                pourront donc plus avoir accès au modification ou au suppression de la demande lorsque celle- ci sera
-               arbitrée. Cela permet donc une sécurité de gestion de données selon la fonction des utilisateurs. J’ai donc
+               arbitrée. Cela permet donc une sécurité de gestion de données selon la fonction des utilisateurs. J’ai aussi
                testé si les utilisateurs lambda en dessous des responsables avaient accès ou non à certaines fonctions.`,
-               images: [],
+               images: [image36, image37, image38, image39, image40,image41, image42],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -334,7 +387,7 @@ export default {
                ]
            },
            {
-               title: `Étape 13 : Implémentation de la fonctionnalité d'ajout de pièces jointes aux demandes`,
+               title: `Étape 14 : Implémentation de la fonctionnalité d'ajout de pièces jointes aux demandes`,
                text: ` Il m’a été demandé l’ajout de fichier à la demande, j’ai donc réfléchi longuement à comment gérer
                ces fichiers, où les stocker et comment les récupérer. J’ai donc élaboré une création d’un dossier uploads
                lors du lancement de l’application ce qui permettra d’y stocker tous les fichiers uploadés dans la demande.
@@ -344,7 +397,7 @@ export default {
                après avoir stocké le nom des fichiers et leurs chemins dans la table fichier, j’ai utilisé des requêtes
                de l’API afin de récupérer le fichier et de l’afficher dans la vue de la demande et d’avoir la possibilité
                de le télécharger. Tout cela en testant que les fichier sont bien téléchargeable et afficher a la demande modifié.`,
-               images: [],
+               images: [image43, image44,image45,image46],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -363,13 +416,13 @@ export default {
                ]
            },
            {
-               title: `Étape 14 : Résolution des problèmes liés au stockage des fichiers uploadés`,
+               title: `Étape 15 : Résolution des problèmes liés au stockage des fichiers uploadés`,
                text: ` Après avoir tester l’application, il y avait une erreur de duplication, c'est-à-dire que lorsque
                l’on mettait le même nom de fichier cela produisait un bug et ça ne mettait pas le fichier dans le dossier
                upload. J’ai donc réfléchi à une autre manière de stocker ces fichiers en créer un autre dossier dans le
                fichier upload avec comme nom l’id de la demande choisie. Cela ne pose donc plus de problème lorsque deux
                demandes différentes possèdent le même nom de fichier.`,
-               images: [],
+               images: [image51],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -384,7 +437,7 @@ export default {
             text: ` Lors de l’arbitrage des demandes, on m’a demandé d’ajouter un motif si c' est un refus ou une
             validation. J’ai donc élaboré cette fonctionnalité qui s’effectue aussi de façon hiérarchique avec un
             motif de responsable, de DGA, de DGS,... . Il a donc fallu une modification du MCD de l’application.`,
-            images: [],
+            images: [image47, image48, image49, image50],
             competences: [
                 {
                     name: 'Compétence 1',
