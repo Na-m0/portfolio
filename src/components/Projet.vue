@@ -86,11 +86,19 @@ import image13 from '../assets/projet/screen/all_figma.png';
 import image14 from '../assets/projet/screen/home_figma.png';
 
 import image15 from '../assets/projet/screen/vue_dossier1.png';
+import image52 from '../assets/projet/screen/login_debut.png';
+import image53 from '../assets/projet/code/login.png';
+import image54 from '../assets/projet/code/data_login.png';
+import image55 from '../assets/projet/code/login_submit.png';
+import image56 from '../assets/projet/screen/home_debut.png';
 
 import image16 from '../assets/projet/screen/token_exemple.png';
 import image17 from '../assets/projet/code/generer_token.png';
 import image18 from '../assets/projet/code/token_exemple.png';
 
+import image57 from '../assets/projet/screen/home2_vue.png';
+import image58 from '../assets/projet/screen/demande_vue_1.png';
+import image59 from '../assets/projet/code/demande_vue.png';
 import image19 from '../assets/projet/code/demandes_service.png';
 
 import image20 from '../assets/projet/screen/accueil_vue.png';
@@ -203,7 +211,7 @@ export default {
                qui permettent une vision claire du code.\n
                J’ai pu élaborer une page de connexion avec des champs qui permettent de se connecter. \n
                Cela fait partie de l’interface utilisateur.`,
-               images: [image15],
+               images: [image15, image52, image53, image54, image55, image56],
                competences: [
                    {
                        name: 'Compétence 1',
@@ -241,7 +249,7 @@ export default {
                 text: `J’ai créé des requêtes pour la page des demandes afin d’afficher les demandes du service
                 auquel l’agent est relié. Ces requêtes vont permettre d’afficher toutes les demandes dans la vue de l’application.
                 J’ai donc testé si la visualisation affichait correctement les bonnes demandes liées au services.`,
-                images: [image19],
+                images: [image57,image58, image59,image19],
                 competences: [
                     {
                         name: 'Compétence 1',
