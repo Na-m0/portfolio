@@ -25,12 +25,12 @@
                   </div>
                 </div>
               </div>
-              <div class="image-content image-container">
-                <img :src="slide.images[0]" alt="Slide image" class="slide-image" @click="openImage(slide.images, 0)"/>
-                <div class="image-indicators">
-                  <div v-for="(image, imgIndex) in slide.images" :key="imgIndex" @click="goToImage(index, imgIndex)" :class="{ active: imgIndex === currentImageIndex }" class="indicator"></div>
+                <div class="image-content image-container">
+                    <img :src="slide.images[0]" alt="Slide image" class="slide-image" @click="openImage(slide.images, slide.titleimages, 0)"/>
+                    <div class="image-indicators">
+                        <div v-for="(image, imgIndex) in slide.images" :key="imgIndex" @click="goToImage(index, imgIndex)" :class="{ active: imgIndex === currentImageIndex }" class="indicator"></div>
+                    </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -48,19 +48,19 @@
       </div>
 
       <!-- Modal pour l'affichage plein écran des images -->
-      <div v-if="fullscreenImage" class="fullscreen-image-modal">
-        <button class="close-button" @click="closeImage">✖</button>
-        <button @click="prevModalImage" class="modal-nav-button left"><i class="fas fa-chevron-left"></i></button>
-        <img :src="fullscreenImage" alt="Fullscreen image"/>
-        <button @click="nextModalImage" class="modal-nav-button right"><i class="fas fa-chevron-right"></i></button>
-        <div class="image-indicators">
-          <div v-for="(image, imgIndex) in modalImages" :key="imgIndex" @click="setCurrentImageIndex(imgIndex)" :class="{ active: imgIndex === currentImageIndex }" class="indicator"></div>
+        <div v-if="fullscreenImage" class="fullscreen-image-modal">
+            <button class="close-button" @click="closeImage">✖</button>
+            <button @click="prevModalImage" class="modal-nav-button left"><i class="fas fa-chevron-left"></i></button>
+            <div class="image-title">{{ modalImageTitle }}</div>
+            <img :src="fullscreenImage" alt="Fullscreen image"/>
+            <button @click="nextModalImage" class="modal-nav-button right"><i class="fas fa-chevron-right"></i></button>
+            <div class="image-indicators">
+                <div v-for="(image, imgIndex) in modalImages" :key="imgIndex" @click="setCurrentImageIndex(imgIndex)" :class="{ active: imgIndex === currentImageIndex }" class="indicator"></div>
+            </div>
         </div>
-      </div>
     </div>
-  </template>
-  
-  
+</template>
+
 <script>
 import { onMounted, ref } from 'vue';
 import Swiper from 'swiper';
@@ -169,10 +169,11 @@ export default {
     const slides = ref([
            {
                title: `Étape 1 : Analyse du cahier des charges`,
-               text: `Au début de mon stage, on m'a confié le cahier des charges du projet. J'ai analysé les exigences de celui-ci pour comprendre 
-               les objectifs et les contraintes du projet. J’ai pu réfléchir à des schémas afin d’avoir une visualisation de la gestion de 
-               l’application et de tous ses besoins. Par exemple, j'ai dû comprendre comment fonctionnait la hiérarchie des agents de la mairie 
+               text: `Au début de mon stage, on m'a confié le cahier des charges du projet. J'ai analysé les exigences de celui-ci pour comprendre
+               les objectifs et les contraintes du projet. J’ai pu réfléchir à des schémas afin d’avoir une visualisation de la gestion de
+               l’application et de tous ses besoins. Par exemple, j'ai dû comprendre comment fonctionnait la hiérarchie des agents de la mairie
                et quels étaient les services présents. J'ai donc élaboré une conception simple du projet à l'aide de ces schémas.`,
+               titleimages: ['Plan du projet','Plan du projet2','Compréhension de la hiérarchie','Schéma hiérarchie','Schéma hiérarchie2'], // Liste des images pour cette slide
                images: [image1,image2,image3,image4,image5], // Liste des images pour cette slide
                competences: [
                    {
@@ -185,10 +186,11 @@ export default {
            },
            {
                title:`Étape 2 : Réflexion et conception du modèle de données`,
-               text: `Suite au schéma que j'ai effectué, j'ai commencé à réfléchir au modèle de données de l'application. J'ai donc imaginé dans un 
+               text: `Suite au schéma que j'ai effectué, j'ai commencé à réfléchir au modèle de données de l'application. J'ai donc imaginé dans un
                premier temps les différentes tables qui pourraient exister pour le projet. J’ai pu concevoir un premier Modèle Conceptuel des Données (MCD) avec les données
-               écrites dans le cahier des charges, telles que les agents, les demandes ou encore les fonctions des agents. Comme il doit y avoir une hiérarchie, 
+               écrites dans le cahier des charges, telles que les agents, les demandes ou encore les fonctions des agents. Comme il doit y avoir une hiérarchie,
                j'ai imaginé des tables des directeurs au-dessus des agents, mais comme je vais le montrer plus tard, cela posera un problème.`,
+               titleimages: ['Tables du projet','Premier MCD'], // Liste des images pour cette slide
                images: [image6, image7],
                competences: [
                    {
@@ -201,11 +203,12 @@ export default {
            },
            {
                title: 'Étape 3 : Création de la base de données (BDD)',
-               text: `Afin de créer la base de données, j'ai décidé d'utiliser PostgreSQL, qui permet de créer les tables et de faire la 
-               simulation des jeux de données. Pour la gestion de ces données, j'ai conçu une API Rest qui permettra d'afficher, d'ajouter, 
-               de modifier ou de supprimer les données dans la vue de l'application. J'ai donc créé les premières requêtes de chaque table dans 
-               l'API en respectant les bonnes pratiques de conception et de programmation, c'est-à-dire en créant les dossiers controllers, 
+               text: `Afin de créer la base de données, j'ai décidé d'utiliser PostgreSQL, qui permet de créer les tables et de faire la
+               simulation des jeux de données. Pour la gestion de ces données, j'ai conçu une API Rest qui permettra d'afficher, d'ajouter,
+               de modifier ou de supprimer les données dans la vue de l'application. J'ai donc créé les premières requêtes de chaque table dans
+               l'API en respectant les bonnes pratiques de conception et de programmation, c'est-à-dire en créant les dossiers controllers,
                routes et services, et en créant un fichier par table.`,
+               titleimages: ['Logo PostgreSQL','Requêtes http', 'Dossiers et fichiers de l\'API'],
                images: [image10, image12, image11],
                competences: [
                     {
@@ -225,9 +228,10 @@ export default {
            },
            {
                title: 'Étape 4 : Création de la maquette du site',
-               text: `Pour y voir plus clair sur l’application et ne pas avancer au hasard, j’ai décidé de créer sur Figma, une maquette des pages principales pour les 
+               text: `Pour y voir plus clair sur l’application et ne pas avancer au hasard, j’ai décidé de créer sur Figma, une maquette des pages principales pour les
                utilisateurs. Cela m’a aidé à développer les pages plus facilement et m'a également permis d’arranger les différents modules de l’application
                de la manière la plus ergonomique possible.`,
+               titleimages: ['Maquette de la page d\'accueil','Maquette de l\'application'],
                images: [image14,image13],
                competences: [
                    {
@@ -241,12 +245,13 @@ export default {
            },
            {
                title: `Étape 5 : Développement de l'interface utilisateur avec Vue.js`,
-               text: `Le backend étant conçu et les maquettes créées, j'ai donc commencé à développer le frontend de l'application avec Vue.js. 
-               Après avoir créé la vue de l'application, j'ai commencé à développer une première page de connexion avec des champs permettant à 
-               l'utilisateur de se connecter via des requêtes envoyées à l'API qui vérifie si l'utilisateur existe. J'ai respecté les bonnes pratiques de 
-               conception et de programmation, c'est-à-dire en créant les dossiers "router" pour la liaison des pages, "components" et "views" 
-               pour une structuration claire des pages, et "store" pour la réutilisation des fonctions qui font appel à l'API. J'ai donc élaboré une 
+               text: `Le backend étant conçu et les maquettes créées, j'ai donc commencé à développer le frontend de l'application avec Vue.js.
+               Après avoir créé la vue de l'application, j'ai commencé à développer une première page de connexion avec des champs permettant à
+               l'utilisateur de se connecter via des requêtes envoyées à l'API qui vérifie si l'utilisateur existe. J'ai respecté les bonnes pratiques de
+               conception et de programmation, c'est-à-dire en créant les dossiers "router" pour la liaison des pages, "components" et "views"
+               pour une structuration claire des pages, et "store" pour la réutilisation des fonctions qui font appel à l'API. J'ai donc élaboré une
                conception simple de la connexion avec des requêtes vers l'API.`,
+               titleimages: ['Dossiers et fichiers de la vue','Page de connexion','Code du template de la page de connexion','Variable retournée dans le data()','Fonction de connexion', 'Vue de la page Home après connexion'],
                images: [image15, image52, image53, image54, image55, image56],
                competences: [
                    {
@@ -269,9 +274,10 @@ export default {
                 title: `Étape 6 : Implémentation de la gestion des tokens des utilisateurs`,
                 text: `Pour compléter la connexion, j’ai élaboré une fonction de gestion des tokens lors de l’identification.
                 Au moment de sa création, ce token est séparé en trois grands blocs : le "header", le "payload" et la "signature". Grâce à ce token, les utilisateurs
-                peuvent être gérés et bénéficier de certains droits d'utilisation sur l'application. Tout cela est fait dans le "store", ce qui permet de réutiliser 
+                peuvent être gérés et bénéficier de certains droits d'utilisation sur l'application. Tout cela est fait dans le "store", ce qui permet de réutiliser
                 les fonctions d'autorisation n'importe où dans l'application.`,
-                images: [image16, image17, image18],
+               titleimages: ['Exemple d\'un token', 'Fonction de connexion avec la création du token', 'Résultat du token'],
+               images: [image16, image17, image18],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -291,12 +297,13 @@ export default {
            },
            {
                 title: `Étape 7 : Affichage des demandes du service lors de la connexion de l'utilisateur`,
-                text: `Pour gérer les demandes, il faut d'abord les afficher. J'ai donc créé une requête qui 
-                affiche les demandes du service auquel l’agent est relié. Ces requêtes permettent d’afficher toutes les données des demandes 
-                dans la vue de l’application pour chaque agent relié à un service, afin qu'il puisse voir les demandes spécifiques à son service. 
-                Il a également été nécessaire de créer d'autres requêtes pour récupérer les données d'autres tables liées à la demande, telles que 
+                text: `Pour gérer les demandes, il faut d'abord les afficher. J'ai donc créé une requête qui
+                affiche les demandes du service auquel l’agent est relié. Ces requêtes permettent d’afficher toutes les données des demandes
+                dans la vue de l’application pour chaque agent relié à un service, afin qu'il puisse voir les demandes spécifiques à son service.
+                Il a également été nécessaire de créer d'autres requêtes pour récupérer les données d'autres tables liées à la demande, telles que
                 la propriété ou le type de demande. À l'aide de jeux de données, j'ai testé si la visualisation affichait correctement les bonnes données des demandes liées aux services.`,
-                images: [image57,image58, image59,image19],
+               titleimages: ['Page Home après connexion','Page des demandes', 'Code pour afficher les données', 'Fonction pour récuperer les données'],
+               images: [image57,image58, image59,image19],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -316,10 +323,11 @@ export default {
            },
            {
                title: `Étape 8 : Correction des problèmes liés au modèle de données`,
-               text: `En voulant effectuer la connexion des agents avec une fonction supérieure, je me suis rendu compte que les tables des directeurs 
-               généraux (DGA et DGS) n'étaient pas du tout utiles pour cette connexion, puisque la table "fonction" permettait aux agents d'obtenir ces rôles. 
-               J’ai donc modifié le MCD afin de résoudre ces problèmes et d'avoir un modèle de données bien plus clair. Grâce à cette table "fonction", 
+               text: `En voulant effectuer la connexion des agents avec une fonction supérieure, je me suis rendu compte que les tables des directeurs
+               généraux (DGA et DGS) n'étaient pas du tout utiles pour cette connexion, puisque la table "fonction" permettait aux agents d'obtenir ces rôles.
+               J’ai donc modifié le MCD afin de résoudre ces problèmes et d'avoir un modèle de données bien plus clair. Grâce à cette table "fonction",
                il est donc possible de gérer les droits des utilisateurs. On pourra autoriser certaines actions de l'utilisateur uniquement s'ils possèdent la fonction requise.`,
+               titleimages: ['Deuxième MCD'],
                images: [image8],
                competences: [
                    {
@@ -334,9 +342,10 @@ export default {
            },
            {
                title: `Étape 9 : Amélioration graphique de l'application`,
-               text: `Afin de rendre l'application conforme au design sur Figma, j'ai refait tout le design de l'application. Cela m'a pris beaucoup de temps, 
+               text: `Afin de rendre l'application conforme au design sur Figma, j'ai refait tout le design de l'application. Cela m'a pris beaucoup de temps,
                mais c'était très important pour l'expérience utilisateur. Il était essentiel que les personnes testant l'application puissent l'apprécier et
                la comprendre. Il fallait également adapter le design en fonction des retours des utilisateurs.`,
+               titleimages: ['Page Home refaite', 'Page des demandes refaite'],
                images: [image20, image21],
                competences: [
                    {
@@ -352,10 +361,14 @@ export default {
            {
                title: `Étape 10 : Ajout de fonctionnalités à la page d'accueil`,
                text: `Afin d’améliorer l'expérience utilisateur, j’ai décidé de rajouter des indications sur le ou les services qui sont reliés à l'utilisateur.
-               J’ai donc ajouté des requêtes à l’API afin d’obtenir les données souhaitées, telles que le nombre de demandes, le budget total 
-               des demandes et les différents statuts des demandes. Toutes les requêtes interrogent la base de données pour obtenir les informations 
-               souhaitées, qui sont ensuite affichées dans la vue de l’utilisateur. J'ai également vérifié que les données récupérées étaient correctes 
+               J’ai donc ajouté des requêtes à l’API afin d’obtenir les données souhaitées, telles que le nombre de demandes, le budget total
+               des demandes et les différents statuts des demandes. Toutes les requêtes interrogent la base de données pour obtenir les informations
+               souhaitées, qui sont ensuite affichées dans la vue de l’utilisateur. J'ai également vérifié que les données récupérées étaient correctes
                et qu'aucun bug n'intervenait.`,
+               titleimages: ['Modules d\'indications sur la page Home', 'Fonction qui récupère la somme des budgets des demandes',
+                   'Fonction qui récupère les demandes d\'un service',
+                   'Fonction qui récupère le nombre de demandes d\'un statut dans un service',
+                   'Code qui permet la mise à jour des données des statuts'],
                images: [image22, image26, image23, image24, image25],
                competences: [
                    {
@@ -376,10 +389,11 @@ export default {
            },
            {
                title: `Étape 11 : Développement des pages d'ajout et de modification de demandes`,
-               text: `S'il y a des demandes, il doit être possible d’en ajouter et de les modifier. J’ai donc ajouté les pages 
-               d’ajout et de modification des demandes, en prenant en compte les informations écrites dans le cahier des charges à 
-               inclure lors de l’ajout et de la modification. Les données sont donc modifiées, ajoutées et visualisées grâce aux requêtes de l’API, 
+               text: `S'il y a des demandes, il doit être possible d’en ajouter et de les modifier. J’ai donc ajouté les pages
+               d’ajout et de modification des demandes, en prenant en compte les informations écrites dans le cahier des charges à
+               inclure lors de l’ajout et de la modification. Les données sont donc modifiées, ajoutées et visualisées grâce aux requêtes de l’API,
                ce qui permet une gestion des demandes par les utilisateurs. J'ai également vérifié que les données sont bien ajoutées ou modifiées.`,
+               titleimages: ['Les différents bouttons pour une demande', 'Page de modification de la demande', 'Fonction de mise à jour des données', 'Page d\'ajout d\'une demande','Fonction d\'ajout d\'une demande'],
                images: [image31, image27, image28, image29, image30],
                competences: [
                    {
@@ -399,13 +413,14 @@ export default {
            },
            {
                 title: `Étape 12 : Implémentation de la connexion d'un Directeur Général Adjoint`,
-                text: `Dans cette application, il y a une hiérarchie des agents. Il faut donc, grâce aux fonctions ajoutées dans la table, 
-                gérer qui aura certains droits dans la vue. J'ai analysé les exigences de la hiérarchie des agents et les ai traduites en spécifications fonctionnelles, 
+                text: `Dans cette application, il y a une hiérarchie des agents. Il faut donc, grâce aux fonctions ajoutées dans la table,
+                gérer qui aura certains droits dans la vue. J'ai analysé les exigences de la hiérarchie des agents et les ai traduites en spécifications fonctionnelles,
                 en mettant en place les différentes permissions pour les agents et les directeurs. J'ai conçu une interface pour les directeurs leur petettant de gérer les demandes de leurs services. J'ai testé les fonctionnalités pour m'assurer que
                 les agents et les directeurs avaient bien les droits spécifiés.
-                J'ai assuré la confidentialité et la sécurité des données en implémentant des contrôles d’accès stricts, garantissant que seuls les utilisateurs 
+                J'ai assuré la confidentialité et la sécurité des données en implémentant des contrôles d’accès stricts, garantissant que seuls les utilisateurs
                 autorisés pouvaient accéder et modifier les données des demandes.`,
-                images: [image32, image33, image34, image35],
+               titleimages: ['Affichage des services sur la "sidebar" lors d\'une connexion d\'un directeur général', 'Variable dans la data()', 'Fonction de récupération des détails et des services de l\'agent', 'Code d\'affichage des services'],
+               images: [image32, image33, image34, image35],
                 competences: [
                     {
                         name: 'Compétence 1',
@@ -428,12 +443,13 @@ export default {
            },
            {
                title: `Étape 13 : Implémentation de la fonctionnalité d'arbitrage des demandes`,
-               text: `Comme le but de l’application est d'arbitrer des demandes selon différentes hiérarchies, 
-               j’ai élaboré le système d’arbitrage de la demande qui met à jour son statut lors de la validation ou du refus. 
-               Cela change le stade de validation lorsque le compte d’un responsable ou d’un directeur arbitre la demande. Les utilisateurs en dessous des 
-               directeurs ne pourront donc plus avoir accès à la modification ou à la suppression de la demande lorsque celle-ci sera arbitrée, ce qui assure 
+               text: `Comme le but de l’application est d'arbitrer des demandes selon différentes hiérarchies,
+               j’ai élaboré le système d’arbitrage de la demande qui met à jour son statut lors de la validation ou du refus.
+               Cela change le stade de validation lorsque le compte d’un responsable ou d’un directeur arbitre la demande. Les utilisateurs en dessous des
+               directeurs ne pourront donc plus avoir accès à la modification ou à la suppression de la demande lorsque celle-ci sera arbitrée, ce qui assure
                la sécurité de gestion des données selon la fonction des utilisateurs. J’ai aussi testé si les utilisateurs avec une fonction inferieur
                avaient accès ou non à certains droits pour m'assurer que les spécifications étaient respectées.`,
+               titleimages: ['Page des demandes avec l\'arbitrage', 'Fenêtre d\'arbitrage', 'Insert de la table statut', 'Fonction de mis à jour du statut d\'une demande', 'Code d\'affichage de la fenêtre', 'Fonction d\'identification du choix', 'Fonction de mise en couleur des statuts'],
                images: [image36, image37, image38, image39, image40,image41, image42],
                competences: [
                    {
@@ -453,12 +469,13 @@ export default {
            },
            {
                title: `Étape 14 : Implémentation de la fonctionnalité d'ajout de pièces jointes aux demandes`,
-               text: `Il m’a été demandé d’ajouter des fichiers aux demandes, ce qui a nécessité une réflexion approfondie sur la gestion, 
-               le stockage et la récupération de ces fichiers. J’ai élaboré la création d’un dossier "uploads" au lancement de l’application pour 
-               y stocker tous les fichiers uploadés dans les demandes. Les données des fichiers sont cryptées et sécurisées dans l’application. Après avoir stocké les fichiers, 
-               j’ai modifié le MCD en ajoutant une table "fichier" pour enregistrer le nom et le chemin des fichiers uploadés. Ensuite, j’ai utilisé des requêtes de l’API 
-               pour récupérer et afficher les fichiers dans la vue de la demande, permettant également leur téléchargement. J’ai testé la fonctionnalité pour m’assurer que 
+               text: `Il m’a été demandé d’ajouter des fichiers aux demandes, ce qui a nécessité une réflexion approfondie sur la gestion,
+               le stockage et la récupération de ces fichiers. J’ai élaboré la création d’un dossier "uploads" au lancement de l’application pour
+               y stocker tous les fichiers uploadés dans les demandes. Les données des fichiers sont cryptées et sécurisées dans l’application. Après avoir stocké les fichiers,
+               j’ai modifié le MCD en ajoutant une table "fichier" pour enregistrer le nom et le chemin des fichiers uploadés. Ensuite, j’ai utilisé des requêtes de l’API
+               pour récupérer et afficher les fichiers dans la vue de la demande, permettant également leur téléchargement. J’ai testé la fonctionnalité pour m’assurer que
                les fichiers étaient correctement téléchargeables et affichés dans les demandes modifiées.`,
+               titleimages: ['Troisième MCD', 'Page d\'ajout d\'une demande avec la possibilitée de mettre une pièce jointe', 'Pièce jointe ajouté', 'Dossier uploads créé et pièce jointe inséré'],
                images: [image43, image44,image45,image46],
                competences: [
                    {
@@ -481,11 +498,12 @@ export default {
            },
            {
                title: `Étape 15 : Résolution des problèmes liés au stockage des fichiers uploadés`,
-               text: `Après avoir testé l’application, j’ai identifié une erreur de duplication des fichiers où plusieurs demandes avec le même nom 
-               de fichier causaient un bug, empêchant le fichier d’être correctement placé dans le dossier "uploads". Pour résoudre ce problème, j'ai 
-               repensé la manière de stocker les fichiers en créant un sous-dossier dans "uploads" avec l'ID de la demande correspondante comme nom. Ainsi, 
-               même si deux demandes différentes partagent le même nom de fichier, cela ne pose plus de problème. Cette solution a permis d'optimiser les modèles 
+               text: `Après avoir testé l’application, j’ai identifié une erreur de duplication des fichiers où plusieurs demandes avec le même nom
+               de fichier causaient un bug, empêchant le fichier d’être correctement placé dans le dossier "uploads". Pour résoudre ce problème, j'ai
+               repensé la manière de stocker les fichiers en créant un sous-dossier dans "uploads" avec l'ID de la demande correspondante comme nom. Ainsi,
+               même si deux demandes différentes partagent le même nom de fichier, cela ne pose plus de problème. Cette solution a permis d'optimiser les modèles
                de données en évitant les conflits de noms de fichiers et en assurant la bonne manipulation des données hétérogènes.`,
+               titleimages: ['Dossier avec comme nom l\'id de la demande créé'],
                images: [image51],
                competences: [
                    {
@@ -499,12 +517,13 @@ export default {
            },
            {
             title: `Étape 16 : Implémentation de la fonctionnalité du motif lors de l'arbitrage`,
-            text: `Lors de l’arbitrage des demandes, j’ai été chargé d’ajouter la fonctionnalité permettant d'ajouter un motif de refus ou de validation, 
-            en suivant une hiérarchie avec des motifs spécifiques pour les responsables, les DGA, les DGS, etc. J'ai élaboré cette fonctionnalité en modifiant 
-            le modèle conceptuel de données (MCD) de l’application pour intégrer ces nouveaux champs de motif. Ainsi, j’ai pu élaborer et implémenter les 
-            spécifications fonctionnelles et non fonctionnelles à partir des exigences définies, tout en optimisant les modèles de données de l’entreprise pour 
+            text: `Lors de l’arbitrage des demandes, j’ai été chargé d’ajouter la fonctionnalité permettant d'ajouter un motif de refus ou de validation,
+            en suivant une hiérarchie avec des motifs spécifiques pour les responsables, les DGA, les DGS, etc. J'ai élaboré cette fonctionnalité en modifiant
+            le modèle conceptuel de données (MCD) de l’application pour intégrer ces nouveaux champs de motif. Ainsi, j’ai pu élaborer et implémenter les
+            spécifications fonctionnelles et non fonctionnelles à partir des exigences définies, tout en optimisant les modèles de données de l’entreprise pour
             répondre aux besoins spécifiques de l’arbitrage des demandes`,
-            images: [image47, image48, image49, image50],
+               titleimages: ['Fenêtre d\'arbitrage avec possibilitée de mettre un motif', 'Motif ajouté', 'Code de l\'affichage du champ pour le motif', 'Fonction de confirmation du choix avec le motif'],
+               images: [image47, image48, image49, image50],
             competences: [
                 {
                     name: 'Compétence 1',
@@ -527,6 +546,8 @@ export default {
         const fullscreenImage = ref(null);
         const currentImageIndex = ref(0);
         const modalImages = ref([]);
+        const modalImageTitles = ref([]);
+        const modalImageTitle = ref('');
 
         onMounted(() => {
             slideshowInstance = new Slideshow(document.querySelector('.slideshow'));
@@ -683,54 +704,65 @@ export default {
         }
     }
 
-    return {
-      slides,
-      progress,
-      fullscreenImage,
-      modalImages,
-      currentImageIndex,
-      activeSlideIndex: 0, // Indice de la diapositive actuellement active
-    goToSlide(index) {
-      this.activeSlideIndex = index; // Met à jour l'indice de la diapositive active
+        return {
+            slides,
+            progress,
+            fullscreenImage,
+            modalImages,
+            modalImageTitles,
+            modalImageTitle,
+            currentImageIndex,
+            activeSlideIndex: 0,
+            goToSlide(index) {
+                this.activeSlideIndex = index;
+            },
+            prevSlide() {
+                slideshowInstance.slideshow.slidePrev();
+                this.updateProgress();
+            },
+            nextSlide() {
+                slideshowInstance.slideshow.slideNext();
+                this.updateProgress();
+            },
+            updateProgress() {
+                progress.value = ((slideshowInstance.slideshow.realIndex + 1) / slides.value.length) * 100;
+            },
+            openImage(images, titles, index) {
+                modalImages.value = images;
+                modalImageTitles.value = titles;
+                currentImageIndex.value = index;
+                fullscreenImage.value = images[index];
+                modalImageTitle.value = titles[index];
+            },
+            closeImage() {
+                fullscreenImage.value = null;
+            },
+            prevModalImage() {
+                if (currentImageIndex.value > 0) {
+                    currentImageIndex.value--;
+                    fullscreenImage.value = modalImages.value[currentImageIndex.value];
+                    modalImageTitle.value = modalImageTitles.value[currentImageIndex.value];
+                }
+            },
+            nextModalImage() {
+                if (currentImageIndex.value < modalImages.value.length - 1) {
+                    currentImageIndex.value++;
+                    fullscreenImage.value = modalImages.value[currentImageIndex.value];
+                    modalImageTitle.value = modalImageTitles.value[currentImageIndex.value];
+                }
+            },
+        };
     },
-      prevSlide() {
-        slideshowInstance.slideshow.slidePrev();
-        this.updateProgress();
-      },
-      nextSlide() {
-        slideshowInstance.slideshow.slideNext();
-        this.updateProgress();
-      },
-      updateProgress() {
-        progress.value = ((slideshowInstance.slideshow.realIndex + 1) / slides.value.length) * 100;
-      },
-      openImage(images, index) {
-        modalImages.value = images;
-        currentImageIndex.value = index;
-        fullscreenImage.value = images[index];
-      },
-      closeImage() {
-        fullscreenImage.value = null;
-      },
-      prevModalImage() {
-        if (currentImageIndex.value > 0) {
-          currentImageIndex.value--;
-          fullscreenImage.value = modalImages.value[currentImageIndex.value];
-        }
-      },
-      nextModalImage() {
-        if (currentImageIndex.value < modalImages.value.length - 1) {
-          currentImageIndex.value++;
-          fullscreenImage.value = modalImages.value[currentImageIndex.value];
-        }
-      },
-    };
-  },
 };
 </script>
 
 <style scoped>
-
+.image-title {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #FFFCF2;
+}
 .image-indicators {
   display: flex;
   justify-content: center;
