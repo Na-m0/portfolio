@@ -10,7 +10,7 @@
               <div class="text-content">
                 <h2 class="slide-title">{{ slide.title }}</h2>
                 <p class="slide-text">{{ slide.text }}</p>
-                <h3 class="slide-subtitle">Apprentissage critique validé</h3>
+                <h3 class="slide-subtitle">Apprentissage(s) critique(s) validé(s)</h3>
                 <div class="learning-container">
                   <!-- Affichage des compétences -->
                   <div v-for="competence in slide.competences" :key="competence.name" class="competence-block">
@@ -143,7 +143,6 @@ import image48 from '../assets/projet/screen/motif_demande.png';
 import image49 from '../assets/projet/code/ajout_motif.png';
 import image50 from '../assets/projet/code/motif_ajout.png';
 
-
 export default {
     mounted() {
       window.addEventListener('keydown', this.keydownHandler);
@@ -179,7 +178,7 @@ export default {
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 2'] },
+                           { level: 'Niveau 1', acs: ['AC 2 | Élaborer des conceptions simples'] },
                        ]
                    },
                ]
@@ -187,7 +186,7 @@ export default {
            {
                title:`Étape 2 : Réflexion et conception du modèle de données`,
                text: `Suite au schéma que j'ai effectué, j'ai commencé à réfléchir au modèle de données de l'application. J'ai donc imaginé dans un 
-               premier temps les différentes tables qui pourraient exister pour le projet. J’ai pu concevoir un premier Modèle Conceptuel des Données(MCD) avec les données 
+               premier temps les différentes tables qui pourraient exister pour le projet. J’ai pu concevoir un premier Modèle Conceptuel des Données (MCD) avec les données
                écrites dans le cahier des charges, telles que les agents, les demandes ou encore les fonctions des agents. Comme il doit y avoir une hiérarchie, 
                j'ai imaginé des tables des directeurs au-dessus des agents, mais comme je vais le montrer plus tard, cela posera un problème.`,
                images: [image6, image7],
@@ -195,7 +194,7 @@ export default {
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 3'] },
+                           { level: 'Niveau 1', acs: ['AC 3 | Concevoir une base de données relationnelle à partir d’un cahier des charges'] },
                        ]
                    },
                ]
@@ -212,13 +211,14 @@ export default {
                     {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 2', acs: ['AC 3'] },
+                           { level: 'Niveau 2', acs: ['AC 3 | Adopter de bonnes pratiques de conception et de programmation'] },
                        ]
                    },
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 1', 'AC 3'] },
+                           { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)',
+                                                      'AC 3 | Concevoir une base de données relationnelle à partir d’un cahier des charges'] },
                        ]
                    },
                ]
@@ -226,15 +226,15 @@ export default {
            {
                title: 'Étape 4 : Création de la maquette du site',
                text: `Pour y voir plus clair sur l’application et ne pas avancer au hasard, j’ai décidé de créer sur Figma, une maquette des pages principales pour les 
-               utilisateurs. Cela m’a aidé à coder les pages plus facilement et permet également d’arranger les différents modules de l’application 
+               utilisateurs. Cela m’a aidé à développer les pages plus facilement et m'a également permis d’arranger les différents modules de l’application
                de la manière la plus ergonomique possible.`,
                images: [image14,image13],
                competences: [
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 2'] },
-                           { level: 'Niveau 2', acs: ['AC 2'] },
+                           { level: 'Niveau 1', acs: ['AC 2 | Élaborer des conceptions simples'] },
+                           { level: 'Niveau 2', acs: ['AC 2 | Appliquer des principes d’accessibilité et d’ergonomie'] },
                        ]
                    },
                ]
@@ -252,22 +252,23 @@ export default {
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 1', 'AC 4'] },
-                           { level: 'Niveau 2', acs: ['AC 3'] },
+                           { level: 'Niveau 1', acs: ['AC 1 | Implémenter des conceptions simples',
+                                                      'AC 4 | Développer des interfaces utilisateurs'] },
+                           { level: 'Niveau 2', acs: ['AC 3 | Adopter de bonnes pratiques de conception et de programmation'] },
                        ]
                    },
                    {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1'] },
+                            { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)'] },
                         ]
                     },
                ]
            },
            {
                 title: `Étape 6 : Implémentation de la gestion des tokens des utilisateurs`,
-                text: `Pour compléter la connexion, j’ai élaboré, comme vu en cours lors de l'année, une fonction de gestion des tokens lors de l’identification. 
-                Lors de sa création, ce token est séparé en trois grands blocs : le "header", le "payload" et la "signature". Grâce à ce token, les utilisateurs
+                text: `Pour compléter la connexion, j’ai élaboré une fonction de gestion des tokens lors de l’identification.
+                Au moment de sa création, ce token est séparé en trois grands blocs : le "header", le "payload" et la "signature". Grâce à ce token, les utilisateurs
                 peuvent être gérés et bénéficier de certains droits d'utilisation sur l'application. Tout cela est fait dans le "store", ce qui permet de réutiliser 
                 les fonctions d'autorisation n'importe où dans l'application.`,
                 images: [image16, image17, image18],
@@ -275,14 +276,15 @@ export default {
                     {
                         name: 'Compétence 1',
                         levels: [
-                            { level: 'Niveau 2', acs: ['AC 1', 'AC 3'] },
+                            { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
+                                                      'AC 3 | Adopter de bonnes pratiques de conception et de programmation'] },
                         ]
                     },
                     {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1'] },
-                            { level: 'Niveau 2', acs: ['AC 2'] },
+                            { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)'] },
+                            { level: 'Niveau 2', acs: ['AC 2 | Assurer la confidentialité des données (intégrité et sécurité)'] },
                         ]
                     },
                 ]
@@ -299,14 +301,15 @@ export default {
                     {
                         name: 'Compétence 1',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 3'] },
-                            { level: 'Niveau 2', acs: ['AC 1'] },
+                            { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications'] },
+                            { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences'] },
                         ]
                     },
                     {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1','AC 2'] },
+                            { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)',
+                                                        'AC 2 | Visualiser des données'] },
                         ]
                     },
                 ]
@@ -322,7 +325,9 @@ export default {
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 2', acs: ['AC 1','AC 2', 'AC 3'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Optimiser les modèles de données de l’entreprise',
+                                   'AC 2 | Assurer la confidentialité des données (intégrité et sécurité)',
+                                   'AC 3 | Organiser la restitution de données à travers la programmation et la visualisation'] },
                        ]
                    },
                ]
@@ -330,22 +335,23 @@ export default {
            {
                title: `Étape 9 : Amélioration graphique de l'application`,
                text: `Afin de rendre l'application conforme au design sur Figma, j'ai refait tout le design de l'application. Cela m'a pris beaucoup de temps, 
-               mais c'était très important pour l'expérience utilisateur, il était essentiel que les personnes testant l'application puissent l'apprécier et 
-               surtout comprendre ce qu'elles voyaient. Il fallait également adapter le design en fonction des retours des utilisateurs.`,
+               mais c'était très important pour l'expérience utilisateur. Il était essentiel que les personnes testant l'application puissent l'apprécier et
+               la comprendre. Il fallait également adapter le design en fonction des retours des utilisateurs.`,
                images: [image20, image21],
                competences: [
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
-                           { level: 'Niveau 2', acs: ['AC 2'] },
+                           { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications',
+                                   'AC 4 | Développer des interfaces utilisateurs'] },
+                           { level: 'Niveau 2', acs: ['AC 2 | Appliquer des principes d’accessibilité et d’ergonomie'] },
                        ]
                    }
                ]
            },
            {
                title: `Étape 10 : Ajout de fonctionnalités à la page d'accueil`,
-               text: `Afin d’améliorer l'expérience utilisateur, j’ai décidé de rajouter des indications sur le ou les services qui sont relié à l'utilisateur. 
+               text: `Afin d’améliorer l'expérience utilisateur, j’ai décidé de rajouter des indications sur le ou les services qui sont reliés à l'utilisateur.
                J’ai donc ajouté des requêtes à l’API afin d’obtenir les données souhaitées, telles que le nombre de demandes, le budget total 
                des demandes et les différents statuts des demandes. Toutes les requêtes interrogent la base de données pour obtenir les informations 
                souhaitées, qui sont ensuite affichées dans la vue de l’utilisateur. J'ai également vérifié que les données récupérées étaient correctes 
@@ -355,14 +361,15 @@ export default {
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
-                           { level: 'Niveau 2', acs: ['AC 1'] },
+                           { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications',
+                                   'AC 4 | Développer des interfaces utilisateurs'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences'] },
                        ]
                    },
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 1'] },
+                           { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)'] },
                        ]
                    },
                ]
@@ -378,14 +385,14 @@ export default {
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 3'] },
-                           { level: 'Niveau 2', acs: ['AC 1'] },
+                           { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences'] },
                        ]
                    },
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 1'] },
+                           { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)'] },
                        ]
                    },
                ]
@@ -394,8 +401,7 @@ export default {
                 title: `Étape 12 : Implémentation de la connexion d'un Directeur Général Adjoint`,
                 text: `Dans cette application, il y a une hiérarchie des agents. Il faut donc, grâce aux fonctions ajoutées dans la table, 
                 gérer qui aura certains droits dans la vue. J'ai analysé les exigences de la hiérarchie des agents et les ai traduites en spécifications fonctionnelles, 
-                en mettant en place les différentes permissions pour les agents et les directeurs. J'ai conçu une interface pour les directeurs afin 
-                de naviguer facilement et de gérer les demandes de leurs services. J'ai testé les fonctionnalités pour m'assurer que 
+                en mettant en place les différentes permissions pour les agents et les directeurs. J'ai conçu une interface pour les directeurs leur petettant de gérer les demandes de leurs services. J'ai testé les fonctionnalités pour m'assurer que
                 les agents et les directeurs avaient bien les droits spécifiés.
                 J'ai assuré la confidentialité et la sécurité des données en implémentant des contrôles d’accès stricts, garantissant que seuls les utilisateurs 
                 autorisés pouvaient accéder et modifier les données des demandes.`,
@@ -404,15 +410,18 @@ export default {
                     {
                         name: 'Compétence 1',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
-                            { level: 'Niveau 2', acs: ['AC 1', 'AC 2'] },
+                            { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications',
+                                    'AC 4 | Développer des interfaces utilisateurs'] },
+                            { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
+                                    'AC 2 | Appliquer des principes d’accessibilité et d’ergonomie'] },
                         ]
                     },
                     {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 1', acs: ['AC 1','AC 2'] },
-                            { level: 'Niveau 2', acs: ['AC 2'] },
+                            { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)',
+                                    'AC 2 | Visualiser des données'] },
+                            { level: 'Niveau 2', acs: ['AC 2 | Assurer la confidentialité des données (intégrité et sécurité)'] },
                         ]
                     },
                 ]
@@ -423,23 +432,21 @@ export default {
                j’ai élaboré le système d’arbitrage de la demande qui met à jour son statut lors de la validation ou du refus. 
                Cela change le stade de validation lorsque le compte d’un responsable ou d’un directeur arbitre la demande. Les utilisateurs en dessous des 
                directeurs ne pourront donc plus avoir accès à la modification ou à la suppression de la demande lorsque celle-ci sera arbitrée, ce qui assure 
-               la sécurité de gestion des données selon la fonction des utilisateurs. J’ai aussi testé si les utilisateurs avec une fonction n-1 
-               avaient accès ou non à certaines fonctions pour m'assurer que les spécifications étaient respectées. // UNE PHRASE COMME CA ? Ainsi, en mettant en place ces fonctionnalités, 
-               j'ai élaboré et implémenté les spécifications fonctionnelles et non fonctionnelles à partir des exigences (AC 1), effectué des essais et évalué leurs
-               résultats en regard des spécifications (AC 3), et assuré la confidentialité des données (intégrité et sécurité) (AC 2).`,
+               la sécurité de gestion des données selon la fonction des utilisateurs. J’ai aussi testé si les utilisateurs avec une fonction inferieur
+               avaient accès ou non à certains droits pour m'assurer que les spécifications étaient respectées.`,
                images: [image36, image37, image38, image39, image40,image41, image42],
                competences: [
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 3'] },
-                           { level: 'Niveau 2', acs: ['AC 1'] },
+                           { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences'] },
                        ]
                    },
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 2', acs: ['AC 2'] },
+                           { level: 'Niveau 2', acs: ['AC 2 | Assurer la confidentialité des données (intégrité et sécurité)'] },
                        ]
                    },
                ]
@@ -451,24 +458,23 @@ export default {
                y stocker tous les fichiers uploadés dans les demandes. Les données des fichiers sont cryptées et sécurisées dans l’application. Après avoir stocké les fichiers, 
                j’ai modifié le MCD en ajoutant une table "fichier" pour enregistrer le nom et le chemin des fichiers uploadés. Ensuite, j’ai utilisé des requêtes de l’API 
                pour récupérer et afficher les fichiers dans la vue de la demande, permettant également leur téléchargement. J’ai testé la fonctionnalité pour m’assurer que 
-               les fichiers étaient correctement téléchargeables et affichés dans les demandes modifiées, démontrant ainsi ma capacité à faire des essais et évaluer leurs 
-               résultats en regard des spécifications (AC 3), à élaborer et implémenter des spécifications fonctionnelles et non fonctionnelles à partir des exigences (AC 1),
-                à adopter de bonnes pratiques de conception et de programmation (AC 3), à mettre à jour et interroger une base de données relationnelle (AC 1), à 
-                optimiser les modèles de données de l’entreprise (AC 1), et à manipuler des données hétérogènes (AC 4).`,
+               les fichiers étaient correctement téléchargeables et affichés dans les demandes modifiées.`,
                images: [image43, image44,image45,image46],
                competences: [
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 3'] },
-                           { level: 'Niveau 2', acs: ['AC 1', 'AC 3'] },
+                           { level: 'Niveau 1', acs: ['AC 3 | Faire des essais et évaluer leurs résultats en regard des spécifications'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
+                                   'AC 3 | Adopter de bonnes pratiques de conception et de programmation'] },
                        ]
                    },
                    {
                        name: 'Compétence 4',
                        levels: [
-                           { level: 'Niveau 1', acs: ['AC 1'] },
-                           { level: 'Niveau 2', acs: ['AC 1', 'AC 4'] },
+                           { level: 'Niveau 1', acs: ['AC 1 | Mettre à jour et interroger une base de données relationnelle (en requêtes directes ou à travers une application)'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Optimiser les modèles de données de l’entreprise',
+                                   'AC 4 | Manipuler des données hétérogènes'] },
                        ]
                    },
                ]
@@ -479,13 +485,14 @@ export default {
                de fichier causaient un bug, empêchant le fichier d’être correctement placé dans le dossier "uploads". Pour résoudre ce problème, j'ai 
                repensé la manière de stocker les fichiers en créant un sous-dossier dans "uploads" avec l'ID de la demande correspondante comme nom. Ainsi, 
                même si deux demandes différentes partagent le même nom de fichier, cela ne pose plus de problème. Cette solution a permis d'optimiser les modèles 
-               de données en évitant les conflits de noms de fichiers et en assurant la bonne manipulation des données hétérogènes, conformément aux spécifications (AC 1 et AC 4).`,
+               de données en évitant les conflits de noms de fichiers et en assurant la bonne manipulation des données hétérogènes.`,
                images: [image51],
                competences: [
                    {
                        name: 'Compétence 1',
                        levels: [
-                           { level: 'Niveau 2', acs: ['AC 1', 'AC 4'] },
+                           { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
+                                   'AC 4 | Vérifier et valider la qualité de l’application par les tests'] },
                        ]
                    },
                ]
@@ -496,19 +503,19 @@ export default {
             en suivant une hiérarchie avec des motifs spécifiques pour les responsables, les DGA, les DGS, etc. J'ai élaboré cette fonctionnalité en modifiant 
             le modèle conceptuel de données (MCD) de l’application pour intégrer ces nouveaux champs de motif. Ainsi, j’ai pu élaborer et implémenter les 
             spécifications fonctionnelles et non fonctionnelles à partir des exigences définies, tout en optimisant les modèles de données de l’entreprise pour 
-            répondre aux besoins spécifiques de l’arbitrage des demandes (AC 1).`,
+            répondre aux besoins spécifiques de l’arbitrage des demandes`,
             images: [image47, image48, image49, image50],
             competences: [
                 {
                     name: 'Compétence 1',
                     levels: [
-                        { level: 'Niveau 2', acs: ['AC 1'] },
+                        { level: 'Niveau 2', acs: ['AC 1 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences'] },
                     ]
                 },
                 {
                     name: 'Compétence 4',
                     levels: [
-                        { level: 'Niveau 2', acs: ['AC 1'] },
+                        { level: 'Niveau 2', acs: ['AC 1 | Optimiser les modèles de données de l’entreprise'] },
                     ]
                 }
             ]
@@ -723,6 +730,7 @@ export default {
 </script>
 
 <style scoped>
+
 .image-indicators {
   display: flex;
   justify-content: center;
@@ -825,13 +833,13 @@ export default {
 /* Conteneur de la section Apprentissage Critique */
 .learning-container {
     display: flex;
-    margin-left: 5%;
     margin-top: 20px;
 }
 
 /* Bloc pour chaque compétence */
 .competence-block {
-    width: 45%; /* Ajustez la largeur des blocs si nécessaire */
+    margin-left: 30px;
+    width: 100%; /* Ajustez la largeur des blocs si nécessaire */
 }
 
 /* Style pour les niveaux */
@@ -905,12 +913,11 @@ p {
 /* Style pour chaque cercle (AC) */
 .circle {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 58px;
-    height: 27px;
+    width: 100%;
+    height: 100%;
     background-color: #ccc5b9;
-    border-radius: 20px;
+    padding: 5px;
+    border-radius: 8px;
     margin-bottom: 10px; /* Espace entre les cercles */
     margin-right: 10px; /* Espace entre les cercles */
 }

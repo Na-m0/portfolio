@@ -8,14 +8,14 @@
                     Lors de cette 2ème année au BUT Informatique, je devais faire ma première
                     découverte du monde du travail dans ce domaine. J’ai donc dû effectuer
                     mon premier stage afin d’en apprendre plus en milieu professionnel.
-                    Ce premier stage à été effectué à la mairie de Montbéliard d’une
+                    Ce premier stage a été effectué à la mairie de Montbéliard pour une
                     durée de 9 semaines, du 22 avril au 21 juin 2024.
                 </p>
                 <br>
                 <p>
                     Le sujet de mon stage était “Création d'une application web de gestion de demandes informatiques en vue de la préparation budgétaire”. 
                     Cette application devait être créée de zéro avec des langages et des frameworks modernes.
-                    Je n’avais pas de mission chaque semaine, mais un projet à réaliser seul, sans autres développeurs. Je devais donc voir les obligations 
+                    Je n’avais pas de mission chaque semaine, mais un projet à réaliser seul, sans autres développeurs. Je devais donc voir les retours
                     des utilisateurs et faire en fonction de leur besoins.
                 </p>
                 <br>
