@@ -16,14 +16,7 @@
           <i class="fab fa-instagram"></i>
         </a></li>
     </ul>
-    <ul class="menu">
-      <li class="menu__item"><a class="menu__link" href="#accueil" @click.prevent="scrollToSection('accueil')">Accueil</a></li>
-      <li class="menu__item"><a class="menu__link" href="#contexte" @click.prevent="scrollToSection('contexte')">Contexte</a></li>
-      <li class="menu__item"><a class="menu__link" href="#langage" @click.prevent="scrollToSection('langage')">Technologies</a></li>
-        <li class="menu__item"><a class="menu__link" href="#competence" @click.prevent="scrollToSection('competence')">Compétences</a></li>
-        <li class="menu__item"><a class="menu__link" href="#projet" @click.prevent="scrollToSection('projet')">Projet</a></li>
-    </ul>
-    <p>&copy;2024 Noam JOLY-GIRODS | All Rights Reserved</p>
+    <p>&copy;2024 Noam JOLY-GIRODS | Tous droits réservés</p>
   </footer>
 </body>
 </template>

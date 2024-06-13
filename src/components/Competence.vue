@@ -10,7 +10,7 @@
                         <i class="icon fas fa-laptop-code"></i>
                     </div>
                     <h2>COMPÉTENCE 1 <span class="comp">| Réaliser un développement d’application</span></h2>
-                    <p class="sous-text">Cette compétence consiste à transformer les besoins des clients en solutions informatiques concrètes. Cela passe par la conception, 
+                    <p class="sous-text">Cette compétence consiste à transformer les besoins des clients en solutions informatiques. Cela passe par la conception, 
                         le codage, les tests et l'intégration des applications, tout en veillant à la qualité et à la documentation du code. Le développeur doit être capable de 
                         créer des applications, de les améliorer et de les maintenir en état de fonctionnement. Il doit également s'assurer que les interfaces utilisateur 
                         sont faciles à utiliser et accessibles, et que les applications répondent aux attentes grâce à des tests.</p>
@@ -24,8 +24,8 @@
                     </div>
                     <h2>COMPÉTENCE 4 <span class="comp">| Gérer des données de l’information</span></h2>
                     <p class="sous-text">
-                        Cette compétence consiste à concevoir, gérer, administrer et exploiter les bases de données de l'entreprise pour fournir les informations 
-                        nécessaires à une gestion efficace. Elle inclut le respect des réglementations sur la protection des données personnelles et la prise en compte 
+                        Cette compétence consiste à concevoir, gérer, administrer et exploiter les bases de données de l'entreprise et mettre à disposition toutes les informations 
+                        pour le bon pilotage de l'entreprise. Elle inclut le respect des réglementations sur la protection des données personnelles et la prise en compte 
                         des enjeux économiques, sociétaux et écologiques. Le développement des bases de données doit suivre un cahier des charges précis, permettant des 
                         mises à jour, des requêtes et des visualisations efficaces, tout en optimisant les modèles de données et en assurant leur sécurité et confidentialité.</p>
                 </div>

@@ -2,7 +2,7 @@
     <div class="container-top">
       <h1 class="main-title">PROJET</h1>
       <h1 class="overlay-title">PROJET</h1>
-      <p class="sous-titre">Voici donc tout l’avancer du projet qui m’a permis de valider les compétences présentées</p>
+      <p class="sous-titre">Voici donc les différentes étapes du projet qui m'ont permis de valider les apprentissages critiques des compétences présentées.</p>
       <div class="swiper-container slideshow">
         <div class="swiper-wrapper">
           <div class="swiper-slide slide" v-for="(slide, index) in slides" :key="index">
@@ -149,8 +149,10 @@ export default {
     const slides = ref([
            {
                title: `Étape 1 : Analyse du cahier des charges`,
-               text: `Grâce au cahier des charges qu' il y a eu, j’ai pu réfléchir à des schéma afin d’avoir une
-               visualisation de comment gérer l’application et de voir tout ce dont il y a besoin.`,
+               text: `Au début de mon stage, on m'a confié le cahier des charges du projet. J'ai analysé les exigences de celui-ci pour comprendre 
+               les objectifs et les contraintes du projet. J’ai pu réfléchir à des schémas afin d’avoir une visualisation de la gestion de 
+               l’application et de tous ses besoins. Par exemple, j'ai dû comprendre comment fonctionnait la hiérarchie des agents de la mairie 
+               et quels étaient les services présents. J'ai donc élaboré une conception simple du projet à l'aide de ces schémas.`,
                images: [image1,image2,image3,image4,image5], // Liste des images pour cette slide
                competences: [
                    {
@@ -162,10 +164,12 @@ export default {
                ]
            },
            {
-               title:`Étape 2 : Réflexion et conception initiale du modèle de données de l'application`,
-               text: ` J’ai pu réfléchir à un premier MCD à partir des données qui était demandé dans le cahier des charge,
-               tel que l’agent, la hiérarchie des fonctions, les demandes, …etc`,
-               images: [image6,image7],
+               title:`Étape 2 : Réflexion et conception du modèle de données`,
+               text: `Suite au schéma que j'ai effectué, j'ai commencé à réfléchir au modèle de données de l'application. J'ai donc imaginé dans un 
+               premier temps les différentes tables qui pourraient exister pour le projet. J’ai pu concevoir un premier Modèle Conceptuel des Données(MCD) avec les données 
+               écrites dans le cahier des charges, telles que les agents, les demandes ou encore les fonctions des agents. Comme il doit y avoir une hiérarchie, 
+               j'ai imaginé des tables des directeurs au-dessus des agents, mais comme je vais le montrer plus tard, cela posera un problème.`,
+               images: [image6, image7],
                competences: [
                    {
                        name: 'Compétence 4',
@@ -176,11 +180,20 @@ export default {
                ]
            },
            {
-               title: 'Étape 3 : Création de la base de données (BDD) pour le projet',
-               text: `J’ai, grâce au MCD, créé la BDD du projet afin de visualiser des données et de les manipuler.
-               Notamment grâce au requête (PUT, GET, POST et DELETE) de l'API que j’ai développé.`,
-               images: [image11, image10, image12],
+               title: 'Étape 3 : Création de la base de données (BDD)',
+               text: `Afin de créer la base de données, j'ai décidé d'utiliser PostgreSQL, qui permet de créer les tables et de faire la 
+               simulation des jeux de données. Pour la gestion de ces données, j'ai conçu une API Rest qui permettra d'afficher, d'ajouter, 
+               de modifier ou de supprimer les données dans la vue de l'application. J'ai donc créé les premières requêtes de chaque table dans 
+               l'API en respectant les bonnes pratiques de conception et de programmation, c'est-à-dire en créant les dossiers controllers, 
+               routes et services, et en créant un fichier par table.`,
+               images: [image10, image12, image11],
                competences: [
+                    {
+                       name: 'Compétence 1',
+                       levels: [
+                           { level: 'Niveau 2', acs: ['AC 3'] },
+                       ]
+                   },
                    {
                        name: 'Compétence 4',
                        levels: [
@@ -190,10 +203,10 @@ export default {
                ]
            },
            {
-               title: 'Étape 4 : Utilisation de Figma pour créer la maquette du site',
-               text: `Afin d’y voir clair sur l’application et de ne pas avancer au hasard, j’ai décidé de créer des
-               maquettes des pages principales pour les utilisateurs. Cela m’a aidé à coder les pages plus facilement. \n
-               Cela va aussi permettre d’arranger les différents modules de l’app de la manière la plus ergonomique possible.`,
+               title: 'Étape 4 : Création de la maquette du site',
+               text: `Pour y voir plus clair sur l’application et ne pas avancer au hasard, j’ai décidé de créer sur Figma, une maquette des pages principales pour les 
+               utilisateurs. Cela m’a aidé à coder les pages plus facilement et permet également d’arranger les différents modules de l’application 
+               de la manière la plus ergonomique possible.`,
                images: [image14,image13],
                competences: [
                    {
@@ -207,10 +220,12 @@ export default {
            },
            {
                title: `Étape 5 : Développement de l'interface utilisateur avec Vue.js`,
-               text: `J’ai donc créé la vue du projet en mettant les différents modules MVC (Model, Vue, Controller)
-               qui permettent une vision claire du code.\n
-               J’ai pu élaborer une page de connexion avec des champs qui permettent de se connecter. \n
-               Cela fait partie de l’interface utilisateur.`,
+               text: `Le backend étant conçu et les maquettes créées, j'ai donc commencé à développer le frontend de l'application avec Vue.js. 
+               Après avoir créé la vue de l'application, j'ai commencé à développer une première page de connexion avec des champs permettant à 
+               l'utilisateur de se connecter via des requêtes envoyées à l'API qui vérifie si l'utilisateur existe. J'ai respecté les bonnes pratiques de 
+               conception et de programmation, c'est-à-dire en créant les dossiers "router" pour la liaison des pages, "components" et "views" 
+               pour une structuration claire des pages, et "store" pour la réutilisation des fonctions qui font appel à l'API. J'ai donc élaboré une 
+               conception simple de la connexion avec des requêtes vers l'API.`,
                images: [image15, image52, image53, image54, image55, image56],
                competences: [
                    {
@@ -220,14 +235,20 @@ export default {
                            { level: 'Niveau 2', acs: ['AC 3'] },
                        ]
                    },
+                   {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1'] },
+                        ]
+                    },
                ]
            },
            {
-                title: `Étape 6 : Implémentation de la gestion des tokens et des utilisateurs`,
-                text: `Afin de compléter la connexion, j’ai élaboré une fonction de gestion de tokens lors de l’identification.\n
-                Tout cela en utilisant un “store” de l’application afin d’avoir la possibilité de réutilisation du code \n
-                Comme il y a un token lors de l'identification, cela va permettre au utilisateur d'être géré et
-                d’avoir certain droit d'utilisation.`,
+                title: `Étape 6 : Implémentation de la gestion des tokens des utilisateurs`,
+                text: `Pour compléter la connexion, j’ai élaboré, comme vu en cours lors de l'année, une fonction de gestion des tokens lors de l’identification. 
+                Lors de sa création, ce token est séparé en trois grands blocs : le "header", le "payload" et la "signature". Grâce à ce token, les utilisateurs
+                peuvent être gérés et bénéficier de certains droits d'utilisation sur l'application. Tout cela est fait dans le "store", ce qui permet de réutiliser 
+                les fonctions d'autorisation n'importe où dans l'application.`,
                 images: [image16, image17, image18],
                 competences: [
                     {
@@ -239,16 +260,19 @@ export default {
                     {
                         name: 'Compétence 4',
                         levels: [
+                            { level: 'Niveau 1', acs: ['AC 1'] },
                             { level: 'Niveau 2', acs: ['AC 2'] },
                         ]
                     },
                 ]
-            },
+           },
            {
                 title: `Étape 7 : Affichage des demandes du service lors de la connexion de l'utilisateur`,
-                text: `J’ai créé des requêtes pour la page des demandes afin d’afficher les demandes du service
-                auquel l’agent est relié. Ces requêtes vont permettre d’afficher toutes les demandes dans la vue de l’application.
-                J’ai donc testé si la visualisation affichait correctement les bonnes demandes liées au services.`,
+                text: `Pour gérer les demandes, il faut d'abord les afficher. J'ai donc créé une requête qui 
+                affiche les demandes du service auquel l’agent est relié. Ces requêtes permettent d’afficher toutes les données des demandes 
+                dans la vue de l’application pour chaque agent relié à un service, afin qu'il puisse voir les demandes spécifiques à son service. 
+                Il a également été nécessaire de créer d'autres requêtes pour récupérer les données d'autres tables liées à la demande, telles que 
+                la propriété ou le type de demande. À l'aide de jeux de données, j'ai testé si la visualisation affichait correctement les bonnes données des demandes liées aux services.`,
                 images: [image57,image58, image59,image19],
                 competences: [
                     {
@@ -261,15 +285,17 @@ export default {
                     {
                         name: 'Compétence 4',
                         levels: [
-                            { level: 'Niveau 2', acs: ['AC 1'] },
+                            { level: 'Niveau 1', acs: ['AC 1','AC 2'] },
                         ]
                     },
                 ]
-            },
+           },
            {
-               title: `Étape 8 : Limitation des actions des différents agents`,
-               text: `Les agents devaient avoir une fonction afin d’avoir une hiérarchie sur les arbitrages et la
-               visualisation des données des demandes. j’ai donc modifier le MCD afin de régler les problèmes de hiérarchies.`,
+               title: `Étape 8 : Correction des problèmes liés au modèle de données`,
+               text: `En voulant effectuer la connexion des agents avec une fonction supérieure, je me suis rendu compte que les tables des directeurs 
+               généraux (DGA et DGS) n'étaient pas du tout utiles pour cette connexion, puisque la table "fonction" permettait aux agents d'obtenir ces rôles. 
+               J’ai donc modifié le MCD afin de résoudre ces problèmes et d'avoir un modèle de données bien plus clair. Grâce à cette table "fonction", 
+               il est donc possible de gérer les droits des utilisateurs. On pourra autoriser certaines actions de l'utilisateur uniquement s'ils possèdent la fonction requise.`,
                images: [image8],
                competences: [
                    {
@@ -282,8 +308,9 @@ export default {
            },
            {
                title: `Étape 9 : Amélioration graphique de l'application`,
-               text: `Afin de rendre comme le figma j'ai refait tout le design de l'application. Cela m'a pris beaucoup de temps mais cela étais tres important 
-               pour l'experience utilisateur, il fallait que les personnes qui test l'application, puissent apprécier et surtout comprendre ce qu'il voyait`,
+               text: `Afin de rendre l'application conforme au design sur Figma, j'ai refait tout le design de l'application. Cela m'a pris beaucoup de temps, 
+               mais c'était très important pour l'expérience utilisateur, il était essentiel que les personnes testant l'application puissent l'apprécier et 
+               surtout comprendre ce qu'elles voyaient. Il fallait également adapter le design en fonction des retours des utilisateurs.`,
                images: [image20, image21],
                competences: [
                    {
@@ -297,12 +324,11 @@ export default {
            },
            {
                title: `Étape 10 : Ajout de fonctionnalités à la page d'accueil`,
-               text: `Afin d’améliorer l'expérience de l'utilisateur, j’ai décidé de rajouter des petites indications
-               sur le ou les services qui lui sont reliés. J’ai donc ajouté des requêtes de l’API afin d’obtenir les
-               données souhaitées, tel que le nombre de demandes, le budget total des demandes et les différents statuts
-               des demandes. Toutes les requêtes interrogent la BDD pour obtenir les données souhaitées qui sont ensuite
-               affichées dans la vue de l’utilisateur. Tout cela en vérifiant si les données récupérées sont bien les
-               bonnes et qu’aucun bug n’intervient.`,
+               text: `Afin d’améliorer l'expérience utilisateur, j’ai décidé de rajouter des indications sur le ou les services qui sont relié à l'utilisateur. 
+               J’ai donc ajouté des requêtes à l’API afin d’obtenir les données souhaitées, telles que le nombre de demandes, le budget total 
+               des demandes et les différents statuts des demandes. Toutes les requêtes interrogent la base de données pour obtenir les informations 
+               souhaitées, qui sont ensuite affichées dans la vue de l’utilisateur. J'ai également vérifié que les données récupérées étaient correctes 
+               et qu'aucun bug n'intervenait.`,
                images: [image22, image26, image23, image24, image25],
                competences: [
                    {
@@ -322,11 +348,10 @@ export default {
            },
            {
                title: `Étape 11 : Développement des pages d'ajout et de modification de demandes`,
-               text: `Si il y a des demandes c’est qu’il doit être possible d’en ajouter et de les modifier.
-               J’ai donc ajouté les pages d’ajout et de modification des demandes, et cela en prenant compte des
-               informations écrites dans le cahier des charge a mettre lors de l’ajout et de la modification.
-               Les données sont donc modifier, ajouter et visualiser grâce au requete de l’API, cela va donc permettre une
-               gestion des demandes par les utilisateurs. Et toujours en vérifiant que les données sont bien ajoutées ou modifiées.`,
+               text: `S'il y a des demandes, il doit être possible d’en ajouter et de les modifier. J’ai donc ajouté les pages 
+               d’ajout et de modification des demandes, en prenant en compte les informations écrites dans le cahier des charges à 
+               inclure lors de l’ajout et de la modification. Les données sont donc modifiées, ajoutées et visualisées grâce aux requêtes de l’API, 
+               ce qui permet une gestion des demandes par les utilisateurs. J'ai également vérifié que les données sont bien ajoutées ou modifiées.`,
                images: [image31, image27, image28, image29, image30],
                competences: [
                    {
@@ -345,38 +370,42 @@ export default {
                ]
            },
            {
-            title: `Étape 12 : Implémentation de la connexion d'un Directeur Général Adjoint`,
-            text: `Dans cette aplication il y aura une hierarchie des agents, il faut donc grace au fonction ajouter
-            dans la table gérer qui aura certain droit dans la vue. J'ai donc implémenter des fonctions afin de
-            différencier un agent commun d'un directeur. Le directeur aura acces a la liste des services qu'il gere et pourra donc
-            voir, modifier ou supprimer les demandes de ses services.`,
-            images: [image32, image33, image34, image35],
-            competences: [
-                {
-                    name: 'Compétence 1',
-                    levels: [
-                        { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
-                        { level: 'Niveau 2', acs: ['AC 1', 'AC 2'] },
-                    ]
-                },
-                {
-                    name: 'Compétence 4',
-                    levels: [
-                        { level: 'Niveau 1', acs: ['AC 1','AC 2'] },
-                        { level: 'Niveau 2', acs: ['AC 1','AC 2'] },
-                    ]
-                },
-            ]
-        },
+                title: `Étape 12 : Implémentation de la connexion d'un Directeur Général Adjoint`,
+                text: `Dans cette application, il y a une hiérarchie des agents. Il faut donc, grâce aux fonctions ajoutées dans la table, 
+                gérer qui aura certains droits dans la vue. J'ai analysé les exigences de la hiérarchie des agents et les ai traduites en spécifications fonctionnelles, 
+                en mettant en place les différentes permissions pour les agents et les directeurs. J'ai conçu une interface pour les directeurs afin 
+                de naviguer facilement et de gérer les demandes de leurs services. J'ai testé les fonctionnalités pour m'assurer que 
+                les agents et les directeurs avaient bien les droits spécifiés.
+                J'ai assuré la confidentialité et la sécurité des données en implémentant des contrôles d’accès stricts, garantissant que seuls les utilisateurs 
+                autorisés pouvaient accéder et modifier les données des demandes.`,
+                images: [image32, image33, image34, image35],
+                competences: [
+                    {
+                        name: 'Compétence 1',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 3', 'AC 4'] },
+                            { level: 'Niveau 2', acs: ['AC 1', 'AC 2'] },
+                        ]
+                    },
+                    {
+                        name: 'Compétence 4',
+                        levels: [
+                            { level: 'Niveau 1', acs: ['AC 1','AC 2'] },
+                            { level: 'Niveau 2', acs: ['AC 2'] },
+                        ]
+                    },
+                ]
+           },
            {
                title: `Étape 13 : Implémentation de la fonctionnalité d'arbitrage des demandes`,
-               text: `Comme le but de l’application est de gérer des demandes selon différentes hiérarchies,
-               j’ai donc élaboré le système d’arbitrage de la demande qui update le statut de la demande lors de
-               la validation ou le refus de la demande. Et cela change le stade de validation lorsque le compte
-               d’un responsable ou un directeur arbitre la demande. Les utilisateurs en dessous des directeurs ne
-               pourront donc plus avoir accès au modification ou au suppression de la demande lorsque celle- ci sera
-               arbitrée. Cela permet donc une sécurité de gestion de données selon la fonction des utilisateurs. J’ai aussi
-               testé si les utilisateurs lambda en dessous des responsables avaient accès ou non à certaines fonctions.`,
+               text: `Comme le but de l’application est d'arbitrer des demandes selon différentes hiérarchies, 
+               j’ai élaboré le système d’arbitrage de la demande qui met à jour son statut lors de la validation ou du refus. 
+               Cela change le stade de validation lorsque le compte d’un responsable ou d’un directeur arbitre la demande. Les utilisateurs en dessous des 
+               directeurs ne pourront donc plus avoir accès à la modification ou à la suppression de la demande lorsque celle-ci sera arbitrée, ce qui assure 
+               la sécurité de gestion des données selon la fonction des utilisateurs. J’ai aussi testé si les utilisateurs avec une fonction n-1 
+               avaient accès ou non à certaines fonctions pour m'assurer que les spécifications étaient respectées. // UNE PHRASE COMME CA ? Ainsi, en mettant en place ces fonctionnalités, 
+               j'ai élaboré et implémenté les spécifications fonctionnelles et non fonctionnelles à partir des exigences (AC 1), effectué des essais et évalué leurs
+               résultats en regard des spécifications (AC 3), et assuré la confidentialité des données (intégrité et sécurité) (AC 2).`,
                images: [image36, image37, image38, image39, image40,image41, image42],
                competences: [
                    {
@@ -396,15 +425,15 @@ export default {
            },
            {
                title: `Étape 14 : Implémentation de la fonctionnalité d'ajout de pièces jointes aux demandes`,
-               text: ` Il m’a été demandé l’ajout de fichier à la demande, j’ai donc réfléchi longuement à comment gérer
-               ces fichiers, où les stocker et comment les récupérer. J’ai donc élaboré une création d’un dossier uploads
-               lors du lancement de l’application ce qui permettra d’y stocker tous les fichiers uploadés dans la demande.
-               Les données des fichiers sont donc cryptées et stockées dans l’application.  Après avoir stocké ces fichiers,
-               il fallait les récupérer afin de les afficher et de les télécharger. J’ai donc eu l'idée de modifier le MCD et
-               d’y ajouter une table fichier afin d’y stocker le nom du fichier et le chemin où il a été uploadé. Enfin,
-               après avoir stocké le nom des fichiers et leurs chemins dans la table fichier, j’ai utilisé des requêtes
-               de l’API afin de récupérer le fichier et de l’afficher dans la vue de la demande et d’avoir la possibilité
-               de le télécharger. Tout cela en testant que les fichier sont bien téléchargeable et afficher a la demande modifié.`,
+               text: `Il m’a été demandé d’ajouter des fichiers aux demandes, ce qui a nécessité une réflexion approfondie sur la gestion, 
+               le stockage et la récupération de ces fichiers. J’ai élaboré la création d’un dossier "uploads" au lancement de l’application pour 
+               y stocker tous les fichiers uploadés dans les demandes. Les données des fichiers sont cryptées et sécurisées dans l’application. Après avoir stocké les fichiers, 
+               j’ai modifié le MCD en ajoutant une table "fichier" pour enregistrer le nom et le chemin des fichiers uploadés. Ensuite, j’ai utilisé des requêtes de l’API 
+               pour récupérer et afficher les fichiers dans la vue de la demande, permettant également leur téléchargement. J’ai testé la fonctionnalité pour m’assurer que 
+               les fichiers étaient correctement téléchargeables et affichés dans les demandes modifiées, démontrant ainsi ma capacité à faire des essais et évaluer leurs 
+               résultats en regard des spécifications (AC 3), à élaborer et implémenter des spécifications fonctionnelles et non fonctionnelles à partir des exigences (AC 1),
+                à adopter de bonnes pratiques de conception et de programmation (AC 3), à mettre à jour et interroger une base de données relationnelle (AC 1), à 
+                optimiser les modèles de données de l’entreprise (AC 1), et à manipuler des données hétérogènes (AC 4).`,
                images: [image43, image44,image45,image46],
                competences: [
                    {
@@ -425,11 +454,11 @@ export default {
            },
            {
                title: `Étape 15 : Résolution des problèmes liés au stockage des fichiers uploadés`,
-               text: ` Après avoir tester l’application, il y avait une erreur de duplication, c'est-à-dire que lorsque
-               l’on mettait le même nom de fichier cela produisait un bug et ça ne mettait pas le fichier dans le dossier
-               upload. J’ai donc réfléchi à une autre manière de stocker ces fichiers en créer un autre dossier dans le
-               fichier upload avec comme nom l’id de la demande choisie. Cela ne pose donc plus de problème lorsque deux
-               demandes différentes possèdent le même nom de fichier.`,
+               text: `Après avoir testé l’application, j’ai identifié une erreur de duplication des fichiers où plusieurs demandes avec le même nom 
+               de fichier causaient un bug, empêchant le fichier d’être correctement placé dans le dossier "uploads". Pour résoudre ce problème, j'ai 
+               repensé la manière de stocker les fichiers en créant un sous-dossier dans "uploads" avec l'ID de la demande correspondante comme nom. Ainsi, 
+               même si deux demandes différentes partagent le même nom de fichier, cela ne pose plus de problème. Cette solution a permis d'optimiser les modèles 
+               de données en évitant les conflits de noms de fichiers et en assurant la bonne manipulation des données hétérogènes, conformément aux spécifications (AC 1 et AC 4).`,
                images: [image51],
                competences: [
                    {
@@ -441,10 +470,12 @@ export default {
                ]
            },
            {
-            title: `Étape 15 : Implémentation de la fonctionnalité du motif lors de l'arbitrage`,
-            text: ` Lors de l’arbitrage des demandes, on m’a demandé d’ajouter un motif si c' est un refus ou une
-            validation. J’ai donc élaboré cette fonctionnalité qui s’effectue aussi de façon hiérarchique avec un
-            motif de responsable, de DGA, de DGS,... . Il a donc fallu une modification du MCD de l’application.`,
+            title: `Étape 16 : Implémentation de la fonctionnalité du motif lors de l'arbitrage`,
+            text: `Lors de l’arbitrage des demandes, j’ai été chargé d’ajouter la fonctionnalité permettant d'ajouter un motif de refus ou de validation, 
+            en suivant une hiérarchie avec des motifs spécifiques pour les responsables, les DGA, les DGS, etc. J'ai élaboré cette fonctionnalité en modifiant 
+            le modèle conceptuel de données (MCD) de l’application pour intégrer ces nouveaux champs de motif. Ainsi, j’ai pu élaborer et implémenter les 
+            spécifications fonctionnelles et non fonctionnelles à partir des exigences définies, tout en optimisant les modèles de données de l’entreprise pour 
+            répondre aux besoins spécifiques de l’arbitrage des demandes (AC 1).`,
             images: [image47, image48, image49, image50],
             competences: [
                 {

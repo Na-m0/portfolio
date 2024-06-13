@@ -2,7 +2,7 @@
     <div class="container-top">
         <h1 class="main-title">TECHNOLOGIES</h1>
         <h1 class="overlay-title">TECHNOLOGIES</h1>
-        <p class="text">Voici donc les langages et frameworks utilisés afin de réussir ce projet</p>
+        <p class="text">Voici donc toutes les technologies utilisés afin de réussir ce projet.</p>
         <div class="allbook">
             <div class="book">
                 <p class="texte">JavaScript est un langage de programmation de scripts principalement employé dans les pages web interactives et à ce 
@@ -13,8 +13,8 @@
                 </div>
             </div>
             <div class="book">
-                <p class="texte">Node.js est une plateforme logicielle libre en JavaScript, orientée vers les applications réseau évènementielles 
-                    hautement concurrentes qui doivent pouvoir monter en charge.</p>
+                <p class="texte">Node.js est une plateforme open-source qui permet d'exécuter du code JavaScript côté serveur. Cela va permettre aux développeurs 
+                    de construire des applications backend performantes</p>
                 <div class="cover node">
                     <img src="/src/assets/NodeJS.png" alt="NodeJS">
                     <h2>Node.js</h2>
@@ -28,11 +28,17 @@
                 </div>
             </div>
             <div class="book">
-                <p class="texte">PostgreSQL est un système de gestion de base de données relationnelle et objet. C'est un outil libre disponible selon les termes d'une 
-                    licence de type BSD.</p>
+                <p class="texte">PostgreSQL est un système de gestion de base de données relationnelle et objet.</p>
                 <div class="cover post">
                     <img src="/src/assets/Postgresql.png" alt="PostgreSQL">
                     <h2>PostgreSQL</h2>
+                </div>
+            </div>
+            <div class="book">
+                <p class="texte">Figma est le principal outil de design collaboratif pour la création de produits significatifs.</p>
+                <div class="cover figma">
+                    <img src="/src/assets/Figma.svg" alt="Figma">
+                    <h2>Figma</h2>
                 </div>
             </div>
         </div>
@@ -111,6 +117,12 @@ p.text {
     box-shadow: 1px 1px 12px #2585c5;
     background-color: rgb(160, 216, 248);
 }
+.cover.figma {
+    box-shadow: 1px 1px 12px #c57225;
+    background-color: rgb(248, 178, 160);
+}
+
+
 .cover {
   top: 0;
   position: absolute;
