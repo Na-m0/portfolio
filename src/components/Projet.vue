@@ -145,6 +145,27 @@ import image50 from '../assets/projet/code/motif_ajout.png';
 
 
 export default {
+    mounted() {
+      window.addEventListener('keydown', this.keydownHandler);
+    },
+    beforeUnmount() {
+      window.removeEventListener('keydown', this.keydownHandler);
+    },
+    methods: {
+      keydownHandler(event) {
+        switch (event.key) {
+          case 'ArrowLeft':
+            this.prevSlide();
+            break;
+          case 'ArrowRight':
+            this.nextSlide();
+            break;
+          default:
+            return;
+        }
+        this.updateProgress();
+      },
+    },
     setup() {
     const slides = ref([
            {
@@ -599,49 +620,49 @@ export default {
             this.slideshow.on('slidePrevTransitionStart', () => this.animate('prev'));
         }
         animate(direction = 'next') {
-            this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active');
-            this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title');
-            this.DOM.activeSlideText = this.DOM.activeSlide.querySelector('.slide-text');
-            this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
-                
-            this.DOM.activeSlideTitleLetters = direction === 'next' ? this.DOM.activeSlideTitleLetters : Array.from(this.DOM.activeSlideTitleLetters).reverse();
-                
-            this.DOM.oldSlide = direction === 'next' ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
-            if (this.DOM.oldSlide) {
-                this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title');
-                this.DOM.oldSlideText = this.DOM.oldSlide.querySelector('.slide-text');
-                this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
-                this.DOM.oldSlideTitleLetters.forEach((letter, pos) => {
-                    TweenMax.to(letter, .3, {
-                        ease: Quart.easeIn,
-                        delay: (this.DOM.oldSlideTitleLetters.length - pos - 1) * .04,
-                        y: '0%',
-                        opacity: 1
-                    });
-                });
-                TweenMax.to(this.DOM.oldSlideText, .3, {
+        this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active');
+        this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title');
+        this.DOM.activeSlideText = this.DOM.activeSlide.querySelector('.slide-text');
+        this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
+            
+        this.DOM.activeSlideTitleLetters = direction === 'next' ? this.DOM.activeSlideTitleLetters : Array.from(this.DOM.activeSlideTitleLetters).reverse();
+            
+        this.DOM.oldSlide = direction === 'next' ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
+        if (this.DOM.oldSlide) {
+            this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title');
+            this.DOM.oldSlideText = this.DOM.oldSlide.querySelector('.slide-text');
+            this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
+            this.DOM.oldSlideTitleLetters.forEach((letter, pos) => {
+                TweenMax.to(letter, .3, {
                     ease: Quart.easeIn,
-                    y: '0%',
-                    opacity: 1
-                });
-            }
-        
-            this.DOM.activeSlideTitleLetters.forEach((letter, pos) => {
-                TweenMax.to(letter, .6, {
-                    ease: Back.easeOut,
-                    delay: pos * .05,
-                    startAt: { y: '50%', opacity: 0 },
+                    delay: (this.DOM.oldSlideTitleLetters.length - pos - 1) * .04,
                     y: '0%',
                     opacity: 1
                 });
             });
-            TweenMax.to(this.DOM.activeSlideText, .6, {
-                ease: Back.easeOut,
-                startAt: { y: '50%', opacity: 0 },
+            TweenMax.to(this.DOM.oldSlideText, .3, {
+                ease: Quart.easeIn,
                 y: '0%',
                 opacity: 1
             });
         }
+    
+        this.DOM.activeSlideTitleLetters.forEach((letter, pos) => {
+            TweenMax.to(letter, .6, {
+                ease: Back.easeOut,
+                delay: pos * .05,
+                startAt: { y: '50%', opacity: 0 },
+                y: '0%',
+                opacity: 1
+            });
+        });
+        TweenMax.to(this.DOM.activeSlideText, .6, {
+            ease: Back.easeOut,
+            startAt: { y: '50%', opacity: 0 },
+            y: '0%',
+            opacity: 1
+        });
+    }
         animatePagination(swiper, paginationEl) {
             this.DOM.paginationItemsLoader = paginationEl.querySelectorAll('.pagination-separator-loader');
             this.DOM.activePaginationItem = paginationEl.querySelector('.slideshow-pagination-item.active');
