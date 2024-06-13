@@ -599,33 +599,33 @@ export default {
             this.slideshow.on('slidePrevTransitionStart', () => this.animate('prev'));
         }
         animate(direction = 'next') {
-            this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active'),
-                this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title'),
-                this.DOM.activeSlideText = this.DOM.activeSlide.querySelector('.slide-text'),
-                this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
-
-            this.DOM.activeSlideTitleLetters = direction === 'next' ? this.DOM.activeSlideTitleLetters : [].slice.call(this.DOM.activeSlideTitleLetters).reverse();
-
+            this.DOM.activeSlide = this.DOM.el.querySelector('.swiper-slide-active');
+            this.DOM.activeSlideTitle = this.DOM.activeSlide.querySelector('.slide-title');
+            this.DOM.activeSlideText = this.DOM.activeSlide.querySelector('.slide-text');
+            this.DOM.activeSlideTitleLetters = this.DOM.activeSlideTitle.querySelectorAll('span');
+                
+            this.DOM.activeSlideTitleLetters = direction === 'next' ? this.DOM.activeSlideTitleLetters : Array.from(this.DOM.activeSlideTitleLetters).reverse();
+                
             this.DOM.oldSlide = direction === 'next' ? this.DOM.el.querySelector('.swiper-slide-prev') : this.DOM.el.querySelector('.swiper-slide-next');
             if (this.DOM.oldSlide) {
-                this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title'),
-                    this.DOM.oldSlideText = this.DOM.oldSlide.querySelector('.slide-text'),
-                    this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
+                this.DOM.oldSlideTitle = this.DOM.oldSlide.querySelector('.slide-title');
+                this.DOM.oldSlideText = this.DOM.oldSlide.querySelector('.slide-text');
+                this.DOM.oldSlideTitleLetters = this.DOM.oldSlideTitle.querySelectorAll('span');
                 this.DOM.oldSlideTitleLetters.forEach((letter, pos) => {
                     TweenMax.to(letter, .3, {
                         ease: Quart.easeIn,
                         delay: (this.DOM.oldSlideTitleLetters.length - pos - 1) * .04,
-                        y: '50%',
-                        opacity: 0
+                        y: '0%',
+                        opacity: 1
                     });
                 });
                 TweenMax.to(this.DOM.oldSlideText, .3, {
                     ease: Quart.easeIn,
-                    y: '50%',
-                    opacity: 0
+                    y: '0%',
+                    opacity: 1
                 });
             }
-
+        
             this.DOM.activeSlideTitleLetters.forEach((letter, pos) => {
                 TweenMax.to(letter, .6, {
                     ease: Back.easeOut,
